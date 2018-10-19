@@ -8,6 +8,9 @@
 # Idea stuff
 .idea
 
+# Gradle
+.gradle
+
 # CMake
 cmake-build-*/
 

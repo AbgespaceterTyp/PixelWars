@@ -15,6 +15,31 @@
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.versioned("images/heavy_tank_blue_0.png")">
     </head>
     <body>
+        <div class="navbar">
+           <a href="#"><img src="app_icon.png"></a>
+            <div class="dropdown">
+                <button class="dropbtn">Game
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="command/n">Random Level</a>
+                    <a href="command/n1">Szenario 1</a>
+                    <a href="command/n2">Szenario 2</a>
+                    <a href="command/n3">Szenario 3</a>
+                    <a href="command/n4">Szenario 4</a>
+                    <a href="command/n5">Szenario 5</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">Help
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Controls</a>
+                    <a href="#">About</a>
+                </div>
+            </div>
+        </div>
         @content
     </body>
 </html>

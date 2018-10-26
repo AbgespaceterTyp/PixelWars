@@ -3,11 +3,13 @@
 @main("Pixel Wars") {
     <div class="gameboard">
         @for(row <- 0 until controller.rowCount) {
-            <div class="gameboardrow@row">
+            <div class="gameboardrow">
             @for(col <- 0 until controller.columnCount) {
-                <span class="gameboardcolumn@col">
-                    @controller.cellContentToText(row,col)
-                </span>
+                @if(controller.cellContentImagePath(row,col).isDefined) {
+                    <img class="gameboardcolumn" src="@routes.Assets.versioned(controller.cellContentImagePath(row,col).get)"/>
+                } else {
+                    <span class="gameboardcolumn"></span>
+                }
             }
             </div>
         }

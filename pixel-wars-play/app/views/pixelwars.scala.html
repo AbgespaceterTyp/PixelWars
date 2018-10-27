@@ -1,6 +1,11 @@
 @(controller:de.htwg.se.msiwar.controller.Controller)
 
 @main("Pixel Wars") {
+    <div class="statusbar">
+        <span class="activePlayer">Turn: @controller.activePlayerName</span>
+        <span class="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>
+        <span class="activePlayerAP">AP: @controller.activePlayerActionPoints</span>
+    </div>
     <div class="gameboard">
         @for(row <- 0 until controller.rowCount) {
             <div class="gameboardrow">

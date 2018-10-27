@@ -8,7 +8,7 @@
                 @if(controller.cellContentImagePath(row,col).isDefined) {
                     <img class="gameboardcolumn" src="@routes.Assets.versioned(controller.cellContentImagePath(row,col).get)"/>
                 } else {
-                    <span class="gameboardcolumn"></span>
+                    <img class="gameboardcolumn" src="@routes.Assets.versioned("images/placeholder.png")"/>
                 }
             }
             </div>

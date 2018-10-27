@@ -19,4 +19,9 @@
             </div>
         }
     </div>
+    <div class="actionbar">
+        @controller.actionIds(controller.activePlayerNumber).foreach(actionId =>
+            <button class="action" type="button">@controller.actionDescription(actionId)</button>
+        )
+    </div>
 }

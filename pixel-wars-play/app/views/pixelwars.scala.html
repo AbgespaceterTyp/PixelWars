@@ -6,7 +6,7 @@
         <span class="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>
         <span class="activePlayerAP">AP: @controller.activePlayerActionPoints</span>
     </div>
-    <div class="gameboard">
+    <div class="gameboard" id="bgimg">
         @for(row <- 0 until controller.rowCount) {
             <div class="gameboardrow">
             @for(col <- 0 until controller.columnCount) {

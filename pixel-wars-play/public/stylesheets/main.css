@@ -25,23 +25,28 @@ p {
 
 .gameboard {
     background-color: #316400;
+    margin-top: 2%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+#bgimg {
+    background-image: url("../images/background_desert.png");
 }
 
 /* Navbar container */
 .navbar {
     overflow: hidden;
     background-color: #333;
-    font-family: Agency FB;
+    font-family: Lucida Console;
+    /*font-family: Agency FB;*/
 }
 
-/* Links inside the navbar */
+/* buttons in navbar ohne dropdown funktion */
 .navbar a {
     float: left;
-    font-size: 12px;
-    color: white;
+    font-size:10px;
     text-align: center;
-    padding: 12px 17px;
-    text-decoration: none;
+    padding: 0.8em;
 }
 
 /* The dropdown container */
@@ -52,11 +57,11 @@ p {
 
 /* Dropdown button */
 .dropdown .dropbtn {
-    font-size: 12px;
+    font-size: 20px;
     border: none;
     outline: none;
     color: white;
-    padding: 12px 17px;
+    padding: 10% 10px;
     background-color: inherit;
     font-family: inherit; /* Important for vertical align on mobile phones */
     margin: 0; /* Important for vertical align on mobile phones */
@@ -64,7 +69,7 @@ p {
 
 /* Add a red background color to navbar links on hover */
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: darkblue;
+    background-color: #000F50;
 }
 
 /* Dropdown content (hidden by default) */

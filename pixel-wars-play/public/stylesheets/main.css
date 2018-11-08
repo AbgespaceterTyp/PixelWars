@@ -23,12 +23,27 @@ p {
     margin-right: auto;
 }
 
+.statusbar {
+    margin-top: 2%;
+    text-align: center;
+}
+
 .gameboard {
     background-color: #316400;
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
 }
+
+.gameboardcolumn {
+    width: 60px;
+    height: 60px;
+}
+
+.gameboardrow {
+    height: 60px;
+}
+
 #bgimg {
     background-image: url("../images/background_desert.png");
 }

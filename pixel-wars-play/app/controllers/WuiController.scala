@@ -9,7 +9,7 @@ import de.htwg.se.msiwar.aview.MainApp.controller
 class WuiController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
   def index() = Action { implicit request: Request[AnyContent] =>
-    Ok(views.html.index())   //pixelwars(controller))
+    Ok(views.html.index())
   }
 
   def command(line: String) = Action{

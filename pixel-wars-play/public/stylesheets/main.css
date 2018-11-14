@@ -38,10 +38,14 @@ p {
 .gameboardcolumn {
     width: 60px;
     height: 60px;
+    float: left;
+    border-style: solid;
+    border-color: black;
 }
 
 .gameboardrow {
     height: 60px;
+    padding: 0px;
 }
 
 #bgimg {

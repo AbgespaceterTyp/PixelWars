@@ -1,6 +1,6 @@
 @(controller:de.htwg.se.msiwar.controller.Controller)
 
-@main("Pixel Wars") {
+@main("Pixel Wars")(controller) {
     <div class="statusbar">
         <span class="activePlayer">Turn: @controller.activePlayerName</span>
         <span class="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>

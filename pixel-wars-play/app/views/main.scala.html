@@ -1,10 +1,4 @@
-@*
- * This template is called from the `index` template. This template
- * handles the rendering of the page header and body tags. It takes
- * two arguments, a `String` for the title of the page and an `Html`
- * object to insert into the body of the page.
- *@
-@(title: String)(content: Html)
+@(title:String)(controller:de.htwg.se.msiwar.controller.Controller)(content:Html)
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,17 +10,16 @@
     <body>
         <div class="navbar">
            <a href="/"><img src="@routes.Assets.versioned("images/app_icon.png")" width="40%" height="40%"></a>
-            @*width="30px" height="30px"*@
             <div class="dropdown">
                 <button class="dropbtn">Szenarios
                     <i class="fa fa-caret-down"></i>
                 </button>
                 <div class="dropdown-content">
-                    <a href="command/n1">2Player -- Black Forest</a>
-                    <a href="command/n2">2Player -- Grand Canyon</a>
-                    <a href="command/n3">3Player -- Desert</a>
-                    <a href="command/n4">4Player -- Showdown in the Alps</a>
-                    <a href="command/n5">4Player -- Black Hawk Down</a>
+                    @for(scenarioId <- controller.scenarioIds){
+                        if(controller.scenarioName(scenarioId).isDefined) {
+                            <a href="command/n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                        }
+                    }
                 </div>
             </div>
             <div class="dropdown">

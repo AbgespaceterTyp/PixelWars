@@ -5,7 +5,7 @@
     <head>
         <script src="@routes.Assets.versioned("javascripts/jquery-3.3.1.js")"> </script>
         <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"> </script>
-        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
+        <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/main.css")">
     </head>
     <body class="bg-light">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -21,23 +21,23 @@
                             Let's play!
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        @for(scenarioId <- controller.scenarioIds) {
-                            if(controller.scenarioName(scenarioId).isDefined) {
-                            <a href="n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                            @for(scenarioId <- controller.scenarioIds) {
+                                @if(controller.scenarioName(scenarioId).isDefined) {
+                                <a href="command/n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                                }
                             }
-                        }
                         </div>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Help
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about" id="navbar" role="button"aria-haspopup="true" aria-expanded="false">
+                           About
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="/resize/9">Controls</a>
-                            <a class="dropdown-item" href="/resize/4">About</a>
-                        </div>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="/control" id="navbar" role="button"aria-haspopup="true" aria-expanded="false">
+                            Control
+                        </a>
+                    </li>
                 </ul>
             </div>
         </nav>

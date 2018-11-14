@@ -5,23 +5,25 @@
 }
 body {
     background-color: #000000;
-    /*color: white;*/
+    color: white;
 }
 
 h1 {
-    color: white;
     text-align: center;
-    font-family:  impact; /*impact*/
+    font-family:  impact;
     font-size: 50px;
-    background-color: #000000;
+    background-color: transparent;
 }
 
 p {
-    background-color: #000000;
+    background-color: transparent;
     font-family: Agency FB;
     font-size: 20px;
     text-align: center;
-    color: white;
+}
+
+img{
+    background-color: transparent;
 }
 
 .center {

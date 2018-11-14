@@ -17,7 +17,7 @@
                 <div class="dropdown-content">
                     @for(scenarioId <- controller.scenarioIds){
                         if(controller.scenarioName(scenarioId).isDefined) {
-                            <a href="command/n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                            <a href="n@scenarioId">@controller.scenarioName(scenarioId).get</a>
                         }
                     }
                 </div>

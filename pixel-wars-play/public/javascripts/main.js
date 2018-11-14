@@ -1,8 +1,16 @@
 function updateGameBoard()
 {
-    var gameboard = document.getElementById("gameboard");
-    var rowCount = gameboard.getElementsByClassName("gameboardrow").length;
-    var colCount = gameboard.getElementsByClassName("gameboardrow").item(0).getElementsByClassName("gameboardcolumn").length
+    let gameboard = document.getElementById("gameboard");
+
+    let gameboardrow = gameboard.getElementsByClassName("gameboardrow");
+    let rowCount = 0;
+    let colCount = 0;
+    if(gameboardrow != null){
+        rowCount = gameboardrow.length;
+        if(rowCount > 0) {
+            colCount = gameboardrow.item(0).getElementsByClassName("gameboardcolumn").length
+        }
+    }
 
     gameboard.style.height = 60 * rowCount + "px";
     gameboard.style.minHeight = 60 * rowCount + "px";

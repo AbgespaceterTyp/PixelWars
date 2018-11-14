@@ -4,12 +4,12 @@
     <script src="@routes.Assets.versioned("javascripts/jquery-3.3.1.js")"> </script>
     <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"> </script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
-    <div class="statusbar">
+    <div id="statusbar">
         <span class="activePlayer">Turn: @controller.activePlayerName</span>
         <span class="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>
         <span class="activePlayerAP">AP: @controller.activePlayerActionPoints</span>
     </div>
-    <div class="gameboard" id="bgimg">
+    <div id="gameboard">
         @for(row <- 0 until controller.rowCount) {
             <div class="gameboardrow">
             @for(col <- 0 until controller.columnCount) {
@@ -22,7 +22,7 @@
             </div>
         }
     </div>
-    <div class="actionbar">
+    <div id="actionbar">
         @controller.actionIds(controller.activePlayerNumber).foreach(actionId =>
             <button class="action" type="button">@controller.actionDescription(actionId)</button>
         )

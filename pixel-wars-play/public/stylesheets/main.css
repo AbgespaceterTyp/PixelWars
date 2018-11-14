@@ -25,16 +25,17 @@ p {
     margin-right: auto;
 }
 
-.statusbar {
+#statusbar {
     margin-top: 2%;
     text-align: center;
 }
 
-.gameboard {
-    background-color: #316400;
+#gameboard {
+    background-color: white;
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
+    background-image: url("../images/background_desert.png");
 }
 
 .gameboardcolumn {
@@ -48,8 +49,4 @@ p {
 .gameboardrow {
     height: 60px;
     padding: 0px;
-}
-
-#bgimg {
-    background-image: url("../images/background_desert.png");
 }

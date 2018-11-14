@@ -5,6 +5,10 @@
 
 GET     /                           controllers.WuiController.index
 
+GET     /about                      controllers.WuiController.about
+
+GET     /control                    controllers.WuiController.control
+
 GET     /command/:line              controllers.WuiController.command(line:String)
 
 # Map static resources from the /public folder to the /assets URL path

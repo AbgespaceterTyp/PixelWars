@@ -1,18 +1,23 @@
 @import url("bootstrap.css");
 
+:root {
+    background-color: #000 !important;
+}
 body {
     background-color: #000000;
-    color: white;
+    /*color: white;*/
 }
 
 h1 {
     color: white;
     text-align: center;
-    font-family: impact;
+    font-family:  impact; /*impact*/
     font-size: 50px;
+    background-color: #000000;
 }
 
 p {
+    background-color: #000000;
     font-family: Agency FB;
     font-size: 20px;
     text-align: center;

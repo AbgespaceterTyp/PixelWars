@@ -11,10 +11,17 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
   def index() = Action { implicit request: Request[AnyContent] =>
     Ok(views.html.index(controller))
   }
-
+  def about() = Action { //implicit request: Request[AnyContent] =>
+    Ok(views.html.about(controller))
+  }
+  def control() = Action { //implicit request: Request[AnyContent] =>
+    Ok(views.html.control(controller))
+  }
   def command(line: String) = Action{
     tui.executeCommand(line)
 
     Ok(views.html.pixelwars(controller))
   }
+
+
 }

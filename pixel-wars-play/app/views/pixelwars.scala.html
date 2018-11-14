@@ -1,31 +1,32 @@
-@(controller:de.htwg.se.msiwar.controller.Controller)
+@(controller: de.htwg.se.msiwar.controller.Controller)
 
 @main("Pixel Wars")(controller) {
     <script src="@routes.Assets.versioned("javascripts/jquery-3.3.1.js")"> </script>
     <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"> </script>
     <script src="@routes.Assets.versioned("javascripts/main.js")"> </script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
-    <div id="statusbar">
-        <span class="activePlayer">Turn: @controller.activePlayerName</span>
-        <span class="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>
-        <span class="activePlayerAP">AP: @controller.activePlayerActionPoints</span>
-    </div>
-    <div id="gameboard">
+    <body>
+        <div id="statusbar">
+            <span class="activePlayer">Turn: @controller.activePlayerName</span>
+            <span class="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>
+            <span class="activePlayerAP">AP: @controller.activePlayerActionPoints</span>
+        </div>
+        <div id="gameboard">
         @for(row <- 0 until controller.rowCount) {
             <div class="gameboardrow">
             @for(col <- 0 until controller.columnCount) {
-                @if(controller.cellContentImagePath(row,col).isDefined) {
-                    <img class="gameboardcolumn" src="@routes.Assets.versioned(controller.cellContentImagePath(row,col).get)"/>
+                @if(controller.cellContentImagePath(row, col).isDefined) {
+                    <img class="gameboardcolumn" src="@routes.Assets.versioned(controller.cellContentImagePath(row, col).get)"/>
                 } else {
                     <img class="gameboardcolumn" src="@routes.Assets.versioned("images/placeholder.png")"/>
                 }
             }
             </div>
         }
-    </div>
-    <div id="actionbar">
+        </div>
+        <div id="actionbar">
         @controller.actionIds(controller.activePlayerNumber).foreach(actionId =>
             <button class="action" type="button">@controller.actionDescription(actionId)</button>
         )
-    </div>
+        </div></body>
 }

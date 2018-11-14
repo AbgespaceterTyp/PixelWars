@@ -37,6 +37,12 @@ img{
     text-align: center;
 }
 
+#actionbar {
+    margin-top: 2%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
 #gameboard {
     background-color: white;
     margin-top: 2%;

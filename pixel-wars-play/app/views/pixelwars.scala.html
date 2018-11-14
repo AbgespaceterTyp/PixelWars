@@ -25,8 +25,8 @@
         }
         </div>
         <div id="actionbar">
-        @controller.actionIds(controller.activePlayerNumber).foreach(actionId =>
-            <button class="action" type="button">@controller.actionDescription(actionId)</button>
-        )
+        @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
+            <button class="action" type="button"><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></button>
+        }
         </div></body>
 }

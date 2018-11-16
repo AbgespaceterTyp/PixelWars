@@ -25,6 +25,26 @@ function updateGameBoard()
     //gameboard.style.backgroundImage = jsRoutes.controllers.WuiController.javascriptRoutes("../images/background_woodlands.png" ).url
 }
 
-$( document ).ready(function() {
+function registerActionbarListeners() {
+    let actionBar = document.getElementById("actionbar");
+    if(actionBar != null){
+        let actions = actionBar.getElementsByClassName("action");
+        for(let i = 0; actions.length; i++){
+            let action = actions[i];
+            if(action != null) {
+                let actionId = action.id;
+                console.log("registering listener for action id " + actionId);
+                //action.onclick = setActionActive(actionId);
+            }
+        }
+    }
+}
+
+function setActionActive(actionId){
+    console.log("set action active " + actionId);
+}
+
+$(document).ready(function() {
     updateGameBoard()
+    //registerActionbarListeners();
 });

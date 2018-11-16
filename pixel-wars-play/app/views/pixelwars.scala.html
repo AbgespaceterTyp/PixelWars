@@ -26,7 +26,7 @@
         </div>
         <div id="actionbar">
         @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
-            <button class="action" type="button"><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></button>
+            <button class="action" id="action_@actionId" type="button"><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></button>
         }
         </div></body>
 }

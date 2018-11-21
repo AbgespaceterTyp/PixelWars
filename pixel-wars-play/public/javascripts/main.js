@@ -22,29 +22,27 @@ function updateGameBoard()
     gameboard.style.marginLeft = "auto";
     gameboard.style.marginRight = "auto";
 
-    //gameboard.style.backgroundImage = jsRoutes.controllers.WuiController.javascriptRoutes("../images/background_woodlands.png" ).url
+    // TODO make ajax call and get correct value
+    //gameboard.style.backgroundImage = "url(/assets/images/background_woodlands.png)";
 }
 
 function registerActionbarListeners() {
-    let actionBar = document.getElementById("actionbar");
-    if(actionBar != null){
-        let actions = actionBar.getElementsByClassName("action");
-        for(let i = 0; actions.length; i++){
-            let action = actions[i];
-            if(action != null) {
-                let actionId = action.id;
-                console.log("registering listener for action id " + actionId);
-                //action.onclick = setActionActive(actionId);
+    $('.action').click(function (event) {
+        console.log('clicked', $(this).text());
+        $.ajax({
+            method: "GET",
+            url: "/action/1/2/3",
+            success: function(){
+                console.log('success!');
+            },
+            error: function(){
+                console.log('error!');
             }
-        }
-    }
-}
-
-function setActionActive(actionId){
-    console.log("set action active " + actionId);
+        });
+    });
 }
 
 $(document).ready(function() {
     updateGameBoard()
-    //registerActionbarListeners();
+    registerActionbarListeners();
 });

@@ -8,20 +8,22 @@ import de.htwg.se.msiwar.aview.MainApp.controller
 @Singleton
 class WuiController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
 
-  def index() = Action { implicit request: Request[AnyContent] =>
+  def index() = Action {
     Ok(views.html.index(controller))
   }
-  def about() = Action { //implicit request: Request[AnyContent] =>
+  def about() = Action {
     Ok(views.html.about(controller))
   }
-  def control() = Action { //implicit request: Request[AnyContent] =>
+  def control() = Action {
     Ok(views.html.control(controller))
   }
   def command(line: String) = Action{
     tui.executeCommand(line)
-
     Ok(views.html.pixelwars(controller))
   }
 
-
+  def executeAction(actionId:Int, rowIndex:Int, columnIndex:Int) = Action {
+    controller.executeAction(actionId, rowIndex, columnIndex);
+    Ok(views.html.pixelwars(controller))
+  }
 }

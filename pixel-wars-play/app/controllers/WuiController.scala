@@ -30,4 +30,8 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
     controller.executeAction(actionId, rowIndex, columnIndex);
     Ok(views.html.pixelwars(controller))
   }
+
+  def canExecuteAction(actionId:Int, rowIndex:Int, columnIndex:Int) = Action {
+    Ok(controller.canExecuteAction(actionId,rowIndex,columnIndex).toString);
+  }
 }

@@ -1,4 +1,4 @@
-let activeActionId = 0;
+let activeActionId = -1;
 
 function updateGameBoard()
 {
@@ -30,23 +30,69 @@ function updateGameBoard()
         dataType: "text",
 
         success: function(result){
-            console.log('Success! Loaded background image: ' + result);
+            console.log("Loaded background image=" + result);
             gameboard.style.backgroundImage = "url(/assets/" + result + ")";
         },
         error: function(){
-            console.log('Error! Failed to load background image');
+            console.log("Failed to load background image");
         }
     });
 }
 
 function registerActionbarListeners() {
-    $('.action').click(function (event) {
+    $(".action").click(function (event) {
         activeActionId = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
-        console.log('Activated action with id: ' + activeActionId);
+        console.log("Activated action with id=" + activeActionId);
+    });
+}
+
+function registerCellListeners() {
+    $(".gameboardcolumn").click(function (event) {
+        let targetRow = this.id.substring(this.id.indexOf("_") + 1, this.id.lastIndexOf("_"));
+        let targetCol = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
+        console.log("Clicked cell at row=" + targetRow + ", col=" + targetCol);
+
+        if(activeActionId < 0){
+            alert("Bitte eine Aktion auswählen")
+        } else {
+            $.ajax({
+                method: "GET",
+                url: "/canExecuteAction/"+activeActionId+"/"+targetRow+"/"+targetCol,
+                dataType: "text",
+
+                success: function(result){
+                    console.log("Action with id=" + activeActionId + ", can be executed=" + result);
+                    if("true" === result){
+                        executeAction(targetRow, targetCol)
+                    } else {
+                        alert("Die Aktion kann am ausgewählten Feld nicht ausgeführt werden")
+                    }
+                },
+                error: function(){
+                    console.log("Failed to check Action execution for action with id=" + activeActionId);
+                }
+            });
+        }
+    });
+}
+
+function executeAction(rowIndex, colIndex) {
+    $.ajax({
+        method: "GET",
+        url: "/executeAction/"+activeActionId+"/"+rowIndex+"/"+colIndex,
+        dataType: "text",
+
+        success: function(result){
+            console.log("Executed action=" + activeActionId);
+        },
+        error: function(){
+            console.log("Failed to execute action=" + activeActionId);
+        }
     });
 }
 
 $(document).ready(function() {
     updateGameBoard();
     registerActionbarListeners();
+    registerCellListeners();
 });

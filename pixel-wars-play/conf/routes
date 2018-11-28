@@ -13,5 +13,7 @@ GET     /command/:line                              controllers.WuiController.co
 
 GET     /action/:actionId/:rowIndex/:columnIndex    controllers.WuiController.executeAction(actionId:Int,rowIndex:Int,columnIndex:Int)
 
+GET     /backgroundImage                            controllers.WuiController.backgroundImage
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                               controllers.Assets.versioned(path="/public", file: Asset)

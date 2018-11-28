@@ -22,6 +22,10 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
     Ok(views.html.pixelwars(controller))
   }
 
+  def backgroundImage() = Action {
+    Ok(controller.levelBackgroundImagePath)
+  }
+
   def executeAction(actionId:Int, rowIndex:Int, columnIndex:Int) = Action {
     controller.executeAction(actionId, rowIndex, columnIndex);
     Ok(views.html.pixelwars(controller))

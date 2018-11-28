@@ -22,8 +22,19 @@ function updateGameBoard()
     gameboard.style.marginLeft = "auto";
     gameboard.style.marginRight = "auto";
 
-    // TODO make ajax call and get correct value
-    //gameboard.style.backgroundImage = "url(/assets/images/background_woodlands.png)";
+    $.ajax({
+        method: "GET",
+        url: "/backgroundImage",
+        dataType: "text",
+
+        success: function(result){
+            console.log('Success! Loaded background image: ' + result);
+            gameboard.style.backgroundImage = "url(/assets/" + result + ")";
+        },
+        error: function(){
+            console.log('Error! Failed to load background image');
+        }
+    });
 }
 
 function registerActionbarListeners() {
@@ -43,6 +54,6 @@ function registerActionbarListeners() {
 }
 
 $(document).ready(function() {
-    updateGameBoard()
+    updateGameBoard();
     registerActionbarListeners();
 });

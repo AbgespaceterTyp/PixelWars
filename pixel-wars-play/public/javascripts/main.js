@@ -1,3 +1,5 @@
+let activeActionId = 0;
+
 function updateGameBoard()
 {
     let gameboard = document.getElementById("gameboard");
@@ -39,17 +41,8 @@ function updateGameBoard()
 
 function registerActionbarListeners() {
     $('.action').click(function (event) {
-        console.log('clicked', $(this).text());
-        $.ajax({
-            method: "GET",
-            url: "/action/1/2/3",
-            success: function(){
-                console.log('success!');
-            },
-            error: function(){
-                console.log('error!');
-            }
-        });
+        activeActionId = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
+        console.log('Activated action with id: ' + activeActionId);
     });
 }
 

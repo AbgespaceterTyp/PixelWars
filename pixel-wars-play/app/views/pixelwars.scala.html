@@ -15,10 +15,12 @@
         @for(row <- 0 until controller.rowCount) {
             <div class="gameboardrow">
             @for(col <- 0 until controller.columnCount) {
-                @if(controller.cellContentImagePath(row, col).isDefined) {
-                    <img class="gameboardcolumn" src="@routes.Assets.versioned(controller.cellContentImagePath(row, col).get)"/>
-                } else {
-                    <img class="gameboardcolumn" src="@routes.Assets.versioned("images/placeholder.png")"/>
+                @defining(row + "_" + col){ cellId =>
+                    @if(controller.cellContentImagePath(row, col).isDefined) {
+                        <img class="gameboardcolumn" id="gameboardcolumn_@cellId" src="@routes.Assets.versioned(controller.cellContentImagePath(row, col).get)"/>
+                    } else {
+                        <img class="gameboardcolumn" id="gameboardcolumn_@cellId" src="@routes.Assets.versioned("images/placeholder.png")"/>
+                    }
                 }
             }
             </div>

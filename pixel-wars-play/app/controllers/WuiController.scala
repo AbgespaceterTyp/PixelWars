@@ -1,10 +1,11 @@
 package controllers
 
 import javax.inject._
-
 import play.api.mvc._
 import de.htwg.se.msiwar.aview.MainApp.tui
 import de.htwg.se.msiwar.aview.MainApp.controller
+import de.htwg.se.msiwar.model.{BlockObject, Position}
+import models.JsonConverter
 import play.api.libs.json.Json
 
 @Singleton
@@ -43,5 +44,11 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
   def cellsInRange(actionId: Int) = Action {
     val cells = controller.cellsInRange(Option(actionId))
     Ok(Json.toJson(cells))
+  }
+
+  def gameboardToJson() = Action {
+    val blockObject = BlockObject("Testname", "TestPfad", Position(0,0))
+    val json = JsonConverter.blockFormat.writes(blockObject)
+    Ok(json)
   }
 }

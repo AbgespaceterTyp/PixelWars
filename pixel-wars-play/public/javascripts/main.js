@@ -59,26 +59,32 @@ function updateHighlighting() {
     $.ajax({
         method: "GET",
         url: "/cellsInRange/" + activeActionId,
-        contentType : "application/json",
+        contentType: "application/json",
         dataType: "json",
 
         success: function (result) {
             console.log("Received cells to updateHighlighting=" + result);
+            // alles deaktivieren und nur die ausgewählten felder mit getelementsby id highlighten.
 
-            /*let gameboardcolumns = gameboard.getElementsByClassName("gameboardcolumn");
-            for(let i = 0; i < gameboardcolumns.length; i++){
+            console.log(result.forEach());
+            let cellsWillGetHighlight = result.valueOf();
+
+            let gameboardcolumns = gameboard.getElementsByClassName("gameboardcolumn");
+            for (let i = 0; i < gameboardcolumns.length; i++) {
                 let cell = gameboardcolumns.item(i);
-
                 let cellRowIndex = cell.id.substring(cell.id.indexOf("_") + 1, cell.id.lastIndexOf("_"));
                 let cellColIndex = cell.id.substring(cell.id.lastIndexOf("_") + 1, cell.id.length);
-                let cellIndex = cellRowIndex + "," + cellColIndex
-
-                if(result.contains(cellIndex)) {
+                let cellIndex = cellRowIndex + "," + cellColIndex;
+                for (let item in cellsWillGetHighlight) {
+                    console.log("iteeeeem " + item.valueOf());
+                }
+                
+                if (result.contains(cellIndex)) {
                     // TODO style highlight
                 } else {
                     // TODO style no highlight
                 }
-            }*/
+            }
         },
         error: function () {
             console.log("Failed to receive cells to updateHighlighting for action with id=" + activeActionId);

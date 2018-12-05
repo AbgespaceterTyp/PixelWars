@@ -14,7 +14,7 @@ GET     /backgroundImage                                   controllers.WuiContro
 
 GET     /cellsInRange/:actionId                            controllers.WuiController.cellsInRange(actionId:Int)
 
-GET     /gameboardToJson                                   controllers.WuiController.gameboardToJson
+GET     /gameBoardToJson                                   controllers.WuiController.gameBoardToJson
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file                                      controllers.Assets.versioned(path="/public", file: Asset)

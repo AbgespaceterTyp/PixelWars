@@ -39,6 +39,20 @@ function updateGameBoard() {
             console.log("Failed to load background image");
         }
     });
+
+    $.ajax({
+        method: "GET",
+        url: "/gameBoardToJson",
+        dataType: "json",
+        contentType: "application/json",
+
+        success: function (result) {
+            console.log("json=" + result);
+        },
+        error: function () {
+            console.log("Failed to get json");
+        }
+    });
 }
 
 /***

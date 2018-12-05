@@ -1,12 +1,15 @@
 package controllers
 
+import com.fasterxml.jackson.databind.JsonNode
+import de.htwg.se.msiwar.aview.MainApp.{controller, tui}
+import de.htwg.se.msiwar.model.GameObject
 import javax.inject._
-import play.api.mvc._
-import de.htwg.se.msiwar.aview.MainApp.tui
-import de.htwg.se.msiwar.aview.MainApp.controller
-import de.htwg.se.msiwar.model.{BlockObject, Position}
 import models.JsonConverter
-import play.api.libs.json.Json
+import play.api.mvc._
+import play.libs.Json
+
+import scala.collection.mutable
+import scala.collection.mutable.ListBuffer
 
 @Singleton
 class WuiController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
@@ -46,9 +49,16 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
     Ok(Json.stringify(Json.toJson(cells)))
   }
 
-  def gameboardToJson() = Action {
-    val blockObject = BlockObject("Testname", "TestPfad", Position(0, 0))
-    val json = JsonConverter.blockFormat.writes(blockObject)
-    Ok(json)
+  def gameBoardToJson() = Action {
+    val list = mutable.MutableList[GameObject]()
+    for(row <- 0 until controller.rowCount) {
+      for(col <- 0 until controller.columnCount) {
+        val gameObjectOpt = controller.cellContent(row,col)
+        if(gameObjectOpt.isDefined) {
+          list += gameObjectOpt.get
+        }
+      }
+    }
+    Ok(JsonConverter.gameObjects.writes(list.toList))
   }
 }

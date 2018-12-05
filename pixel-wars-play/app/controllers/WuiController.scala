@@ -1,6 +1,5 @@
 package controllers
 
-import com.fasterxml.jackson.databind.JsonNode
 import de.htwg.se.msiwar.aview.MainApp.{controller, tui}
 import de.htwg.se.msiwar.model.GameObject
 import javax.inject._
@@ -9,7 +8,6 @@ import play.api.mvc._
 import play.libs.Json
 
 import scala.collection.mutable
-import scala.collection.mutable.ListBuffer
 
 @Singleton
 class WuiController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {

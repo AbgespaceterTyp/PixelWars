@@ -25,6 +25,7 @@
                             @for(scenarioId <- controller.scenarioIds) {
                                 @if(controller.scenarioName(scenarioId).isDefined) {
                                 <a href="command/n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                                    <br>
                                 }
                             }
                         </div>

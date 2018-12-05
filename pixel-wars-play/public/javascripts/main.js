@@ -1,45 +1,6 @@
 let activeActionId = -1;
 
-/***
- * updateGameBoard()
- */
-function updateGameBoard() {
-    let gameboard = document.getElementById("gameboard");
-
-    let gameboardrow = gameboard.getElementsByClassName("gameboardrow");
-    let rowCount = 0;
-    let colCount = 0;
-    if (gameboardrow != null) {
-        rowCount = gameboardrow.length;
-        if (rowCount > 0) {
-            colCount = gameboardrow.item(0).getElementsByClassName("gameboardcolumn").length
-        }
-    }
-
-    gameboard.style.height = 60 * rowCount + "px";
-    gameboard.style.minHeight = 60 * rowCount + "px";
-
-    gameboard.style.width = 60 * colCount + "px";
-    gameboard.style.minWidth = 60 * colCount + "px";
-
-    gameboard.style.display = "block";
-    gameboard.style.marginLeft = "auto";
-    gameboard.style.marginRight = "auto";
-
-    $.ajax({
-        method: "GET",
-        url: "/backgroundImage",
-        dataType: "text",
-
-        success: function (result) {
-            console.log("Loaded background image=" + result);
-            gameboard.style.backgroundImage = "url(/assets/" + result + ")";
-        },
-        error: function () {
-            console.log("Failed to load background image");
-        }
-    });
-
+function updateGameBoardContent() {
     $.ajax({
         method: "GET",
         url: "/gameBoardToJson",
@@ -48,6 +9,11 @@ function updateGameBoard() {
 
         success: function (result) {
             console.log("json=" + result);
+            let gameBoard = document.getElementById("gameBoard");
+            let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
+            for (let i = 0; i < gameBoardCell.length; i++) {
+                let cell = gameBoardCell.item(i);
+            }
         },
         error: function () {
             console.log("Failed to get json");
@@ -55,9 +21,47 @@ function updateGameBoard() {
     });
 }
 
-/***
- * registerActionbarListeners()
- */
+function updateGameBoardScale(){
+    let gameBoard = document.getElementById("gameBoard");
+
+    let gameBoardRow = gameBoard.getElementsByClassName("gameBoardRow");
+    let rowCount = 0;
+    let colCount = 0;
+    if (gameBoardRow != null) {
+        rowCount = gameBoardRow.length;
+        if (rowCount > 0) {
+            colCount = gameBoardRow.item(0).getElementsByClassName("gameBoardCell").length
+        }
+    }
+
+    gameBoard.style.height = 60 * rowCount + "px";
+    gameBoard.style.minHeight = 60 * rowCount + "px";
+
+    gameBoard.style.width = 60 * colCount + "px";
+    gameBoard.style.minWidth = 60 * colCount + "px";
+
+    gameBoard.style.display = "block";
+    gameBoard.style.marginLeft = "auto";
+    gameBoard.style.marginRight = "auto";
+}
+
+function updateGameBoardBackgroundImage(){
+    $.ajax({
+        method: "GET",
+        url: "/backgroundImage",
+        dataType: "text",
+
+        success: function (result) {
+            console.log("Loaded background image=" + result);
+            let gameBoard = document.getElementById("gameBoard");
+            gameBoard.style.backgroundImage = "url(/assets/" + result + ")";
+        },
+        error: function () {
+            console.log("Failed to load background image");
+        }
+    });
+}
+
 function registerActionbarListeners() {
     $(".action").click(function (event) {
         activeActionId = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
@@ -66,9 +70,6 @@ function registerActionbarListeners() {
     });
 }
 
-/***
- * updateHighlighting()
- */
 function updateHighlighting() {
     $.ajax({
         method: "GET",
@@ -80,9 +81,10 @@ function updateHighlighting() {
             console.log("Received cells to updateHighlighting=" + result);
             // alles deaktivieren und nur die ausgewählten felder mit getelementsby id highlighten.
 
-            let gameboardcolumns = gameboard.getElementsByClassName("gameboardcolumn");
-            for (let i = 0; i < gameboardcolumns.length; i++) {
-                let cell = gameboardcolumns.item(i); // [object HTMLImageElement]
+            let gameBoard = document.getElementById("gameBoard");
+            let gameBoardCells = gameBoard.getElementsByClassName("gameBoardCell");
+            for (let i = 0; i < gameBoardCells.length; i++) {
+                let cell = gameBoardCells.item(i); // [object HTMLImageElement]
                 let cellRowIndex = cell.id.substring(cell.id.indexOf("_") + 1, cell.id.lastIndexOf("_"));
                 let cellColIndex = cell.id.substring(cell.id.lastIndexOf("_") + 1, cell.id.length);
                 let cellIndex = [cellRowIndex, cellColIndex];
@@ -103,11 +105,8 @@ function updateHighlighting() {
     });
 }
 
-/***
- * registerCellListeners()
- */
 function registerCellListeners() {
-    $(".gameboardcolumn").click(function (event) {
+    $(".gameBoardCell").click(function (event) {
         let targetRow = this.id.substring(this.id.indexOf("_") + 1, this.id.lastIndexOf("_"));
         let targetCol = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
         console.log("Clicked cell at row=" + targetRow + ", col=" + targetCol);
@@ -136,11 +135,6 @@ function registerCellListeners() {
     });
 }
 
-/***
- * executeAction(rowIndex, colIndex)
- * @param rowIndex
- * @param colIndex
- */
 function executeAction(rowIndex, colIndex) {
     $.ajax({
         method: "GET",
@@ -158,7 +152,10 @@ function executeAction(rowIndex, colIndex) {
 }
 
 $(document).ready(function () {
-    updateGameBoard();
+    updateGameBoardScale();
+    updateGameBoardBackgroundImage();
+    updateGameBoardContent();
+
     registerActionbarListeners();
     registerCellListeners();
 });

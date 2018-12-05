@@ -11,8 +11,21 @@ function updateGameBoardContent() {
             console.log("json=" + result);
             let gameBoard = document.getElementById("gameBoard");
             let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
+
+            // clear previous content
             for (let i = 0; i < gameBoardCell.length; i++) {
                 let cell = gameBoardCell.item(i);
+                cell.src = "";
+            }
+
+            // /assets/images/block_wood.png
+
+            // find and update cells
+            for(let j = 0; j < result.length; j++) {
+                let gameObj = result[j];
+                let cellToUpdate = document.getElementById("gameBoardCell_" + gameObj.rowIdx + "_" + gameObj.columnIdx);
+                console.log("cell src=" + cellToUpdate.src);
+                cellToUpdate.src = "/assets/" + gameObj.imagePath;
             }
         },
         error: function () {
@@ -90,13 +103,13 @@ function updateHighlighting() {
                 let cellIndex = [cellRowIndex, cellColIndex];
                 //let cellIndex = cellRowIndex + "," + cellColIndex;
 
-                result.forEach(function (pos) {
+                /*result.forEach(function (pos) {
                     if (pos.toString() === cellIndex.toString()) {
                         console.log("highlight field: " + pos);
 
                         //cell.addClass("highlight");
                     }
-                });
+                });*/
             }
         },
         error: function () {
@@ -143,6 +156,7 @@ function executeAction(rowIndex, colIndex) {
 
         success: function (result) {
             console.log("Executed action=" + activeActionId);
+            updateGameBoardContent();
             updateHighlighting();
         },
         error: function () {

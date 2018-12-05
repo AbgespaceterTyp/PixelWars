@@ -43,11 +43,11 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
 
   def cellsInRange(actionId: Int) = Action {
     val cells = controller.cellsInRange(Option(actionId))
-    Ok(Json.toJson(cells))
+    Ok(Json.stringify(Json.toJson(cells)))
   }
 
   def gameboardToJson() = Action {
-    val blockObject = BlockObject("Testname", "TestPfad", Position(0,0))
+    val blockObject = BlockObject("Testname", "TestPfad", Position(0, 0))
     val json = JsonConverter.blockFormat.writes(blockObject)
     Ok(json)
   }

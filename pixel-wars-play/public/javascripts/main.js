@@ -66,24 +66,21 @@ function updateHighlighting() {
             console.log("Received cells to updateHighlighting=" + result);
             // alles deaktivieren und nur die ausgewählten felder mit getelementsby id highlighten.
 
-            console.log(result.forEach());
-            let cellsWillGetHighlight = result.valueOf();
-
             let gameboardcolumns = gameboard.getElementsByClassName("gameboardcolumn");
             for (let i = 0; i < gameboardcolumns.length; i++) {
-                let cell = gameboardcolumns.item(i);
+                let cell = gameboardcolumns.item(i); // [object HTMLImageElement]
                 let cellRowIndex = cell.id.substring(cell.id.indexOf("_") + 1, cell.id.lastIndexOf("_"));
                 let cellColIndex = cell.id.substring(cell.id.lastIndexOf("_") + 1, cell.id.length);
-                let cellIndex = cellRowIndex + "," + cellColIndex;
-                for (let item in cellsWillGetHighlight) {
-                    console.log("iteeeeem " + item.valueOf());
-                }
-                
-                if (result.contains(cellIndex)) {
-                    // TODO style highlight
-                } else {
-                    // TODO style no highlight
-                }
+                let cellIndex = [cellRowIndex, cellColIndex];
+                //let cellIndex = cellRowIndex + "," + cellColIndex;
+
+                result.forEach(function (pos) {
+                    if (pos.toString() === cellIndex.toString()) {
+                        console.log("highlight field: " + pos);
+
+                        //cell.addClass("highlight");
+                    }
+                });
             }
         },
         error: function () {

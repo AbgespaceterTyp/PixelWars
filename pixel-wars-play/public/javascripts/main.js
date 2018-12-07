@@ -162,6 +162,27 @@ function executeAction(rowIndex, colIndex) {
     });
 }
 
+function connectWebSocket() {
+    let websocket = new WebSocket("ws://localhost:9000/websocket");
+    websocket.setTimeout
+
+    websocket.onopen = function(event) {
+        console.log("Connected to Websocket");
+    };
+
+    websocket.onclose = function () {
+        console.log('Connection with Websocket Closed!');
+    };
+
+    websocket.onerror = function (error) {
+        console.log('Error in Websocket Occured: ' + error);
+    };
+
+    websocket.onmessage = function (e) {
+        console.log("got message=" + e.data)
+    };
+}
+
 $(document).ready(function () {
     updateGameBoardScale();
     updateGameBoardBackgroundImage();
@@ -169,4 +190,6 @@ $(document).ready(function () {
 
     registerActionbarListeners();
     registerCellListeners();
+
+    connectWebSocket();
 });

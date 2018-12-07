@@ -53,10 +53,7 @@ class WuiController @Inject()(implicit system: ActorSystem, materializer: Materi
     Ok(JsonConverter.gameBoardToJson())
   }
 
-  def socket = WebSocket.acceptOrResult[String, String] { request =>
-    Future.successful(request.contentType match {
-      case None => Left(Forbidden)
-      case Some("application/json") => Right(ActorFlow.actorRef(out => WebSocketActor.props(out)))
-    })
+  def socket = WebSocket.accept[String, String] { request =>
+    ActorFlow.actorRef(out => WebSocketActor.props(out))
   }
 }

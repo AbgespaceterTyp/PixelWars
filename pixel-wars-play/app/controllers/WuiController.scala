@@ -1,17 +1,18 @@
 package controllers
 
+import akka.actor.ActorSystem
+import akka.stream.Materializer
 import de.htwg.se.msiwar.aview.MainApp.{controller, tui}
-import de.htwg.se.msiwar.model.GameObject
 import javax.inject._
-import models.JsonConverter
-import play.api.libs.json.Writes
+import play.api.libs.streams.ActorFlow
 import play.api.mvc._
-import play.libs.Json
+import socket.WebSocketActor
+import utils.JsonConverter
 
-import scala.collection.mutable
+import scala.concurrent.Future
 
 @Singleton
-class WuiController @Inject()(cc: ControllerComponents) extends AbstractController(cc) {
+class WuiController @Inject()(implicit system: ActorSystem, materializer: Materializer, cc: ControllerComponents) extends AbstractController(cc) {
 
   def index() = Action {
     Ok(views.html.index(controller))
@@ -49,15 +50,13 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
   }
 
   def gameBoardToJson() = Action {
-    val list = mutable.MutableList[GameObject]()
-    for(row <- 0 until controller.rowCount) {
-      for(col <- 0 until controller.columnCount) {
-        val gameObjectOpt = controller.cellContent(row,col)
-        if(gameObjectOpt.isDefined) {
-          list += gameObjectOpt.get
-        }
-      }
-    }
-    Ok(JsonConverter.gameObjects.writes(list.toList))
+    Ok(JsonConverter.gameBoardToJson())
+  }
+
+  def socket = WebSocket.acceptOrResult[String, String] { request =>
+    Future.successful(request.contentType match {
+      case None => Left(Forbidden)
+      case Some("application/json") => Right(ActorFlow.actorRef(out => WebSocketActor.props(out)))
+    })
   }
 }

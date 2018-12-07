@@ -1,7 +1,10 @@
-package models
+package utils
 
+import de.htwg.se.msiwar.aview.MainApp.controller
 import de.htwg.se.msiwar.model._
 import play.api.libs.json._
+
+import scala.collection.mutable
 
 object JsonConverter {
   
@@ -30,5 +33,18 @@ object JsonConverter {
     def writes(o: List[GameObject]): JsValue = {
       JsArray(o.map(Json.toJson(_)))
     }
+  }
+
+  def gameBoardToJson() : JsValue = {
+    val list = mutable.MutableList[GameObject]()
+    for(row <- 0 until controller.rowCount) {
+      for(col <- 0 until controller.columnCount) {
+        val gameObjectOpt = controller.cellContent(row,col)
+        if(gameObjectOpt.isDefined) {
+          list += gameObjectOpt.get
+        }
+      }
+    }
+    JsonConverter.gameObjects.writes(list.toList)
   }
 }

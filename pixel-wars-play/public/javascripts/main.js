@@ -1,5 +1,21 @@
 let activeActionId = -1;
 
+function updateStatusBar(playerName, hp, ap) {
+    document.getElementsByClassName("activePlayer").textContent = "Turn: " + playerName;
+    document.getElementsByClassName("activePlayerHealth").textContent = "HP: " + hp;
+    document.getElementsByClassName("activePlayerAP").textContent = "AP: " + ap;
+}
+
+function updateActionBar() {
+    /*
+    <div id="actionbar" class="switch-toggle switch-candy">
+        @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
+            <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></input>
+        }
+        </div>
+     */
+}
+
 function updateGameBoardContent() {
     $.ajax({
         method: "GET",
@@ -178,6 +194,9 @@ function connectWebSocket() {
 
     websocket.onmessage = function (e) {
         console.log("got message=" + e.data)
+
+        updateStatusBar("Lukas", 5, 3);
+        updateActionBar();
     };
 }
 

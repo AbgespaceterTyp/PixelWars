@@ -9,8 +9,6 @@ import play.api.mvc._
 import socket.WebSocketActor
 import utils.JsonConverter
 
-import scala.concurrent.Future
-
 @Singleton
 class WuiController @Inject()(implicit system: ActorSystem, materializer: Materializer, cc: ControllerComponents) extends AbstractController(cc) {
 

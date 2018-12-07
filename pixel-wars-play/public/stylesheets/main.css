@@ -63,3 +63,8 @@ img{
     height: 60px;
     padding: 0px;
 }
+
+.highlight {
+    border-style: solid;
+    border-color: yellow;
+}

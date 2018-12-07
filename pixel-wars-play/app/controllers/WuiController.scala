@@ -4,6 +4,7 @@ import de.htwg.se.msiwar.aview.MainApp.{controller, tui}
 import de.htwg.se.msiwar.model.GameObject
 import javax.inject._
 import models.JsonConverter
+import play.api.libs.json.Writes
 import play.api.mvc._
 import play.libs.Json
 
@@ -44,7 +45,7 @@ class WuiController @Inject()(cc: ControllerComponents) extends AbstractControll
 
   def cellsInRange(actionId: Int) = Action {
     val cells = controller.cellsInRange(Option(actionId))
-    Ok(Json.stringify(Json.toJson(cells)))
+    Ok(JsonConverter.tuples.writes(cells))
   }
 
   def gameBoardToJson() = Action {

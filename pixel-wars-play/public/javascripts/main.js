@@ -9,16 +9,14 @@ function updateGameBoardContent() {
 
         success: function (result) {
             console.log("json=" + result);
+
             let gameBoard = document.getElementById("gameBoard");
             let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
-
             // clear previous content
             for (let i = 0; i < gameBoardCell.length; i++) {
                 let cell = gameBoardCell.item(i);
                 cell.src = "";
             }
-
-            // /assets/images/block_wood.png
 
             // find and update cells
             for(let j = 0; j < result.length; j++) {
@@ -66,6 +64,7 @@ function updateGameBoardBackgroundImage(){
 
         success: function (result) {
             console.log("Loaded background image=" + result);
+            
             let gameBoard = document.getElementById("gameBoard");
             gameBoard.style.backgroundImage = "url(/assets/" + result + ")";
         },
@@ -92,24 +91,20 @@ function updateHighlighting() {
 
         success: function (result) {
             console.log("Received cells to updateHighlighting=" + result);
-            // alles deaktivieren und nur die ausgewählten felder mit getelementsby id highlighten.
 
             let gameBoard = document.getElementById("gameBoard");
-            let gameBoardCells = gameBoard.getElementsByClassName("gameBoardCell");
-            for (let i = 0; i < gameBoardCells.length; i++) {
-                let cell = gameBoardCells.item(i); // [object HTMLImageElement]
-                let cellRowIndex = cell.id.substring(cell.id.indexOf("_") + 1, cell.id.lastIndexOf("_"));
-                let cellColIndex = cell.id.substring(cell.id.lastIndexOf("_") + 1, cell.id.length);
-                let cellIndex = [cellRowIndex, cellColIndex];
-                //let cellIndex = cellRowIndex + "," + cellColIndex;
+            let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
+            // clear previous highlight
+            for (let i = 0; i < gameBoardCell.length; i++) {
+                let cell = gameBoardCell.item(i);
+                cell.classList.remove("highlight");
+            }
 
-                /*result.forEach(function (pos) {
-                    if (pos.toString() === cellIndex.toString()) {
-                        console.log("highlight field: " + pos);
-
-                        //cell.addClass("highlight");
-                    }
-                });*/
+            for(let j = 0; j < result.length; j++) {
+                let tuple = result[j];
+                let cellToHighlight = document.getElementById("gameBoardCell_" + tuple.rowIdx + "_" + tuple.columnIdx);
+                console.log("cellIdToHighlight=" + cellToHighlight);
+                cellToHighlight.classList.add("highlight");
             }
         },
         error: function () {
@@ -134,6 +129,7 @@ function registerCellListeners() {
 
                 success: function (result) {
                     console.log("Action with id=" + activeActionId + ", can be executed=" + result);
+
                     if ("true" === result) {
                         executeAction(targetRow, targetCol)
                     } else {
@@ -156,6 +152,7 @@ function executeAction(rowIndex, colIndex) {
 
         success: function (result) {
             console.log("Executed action=" + activeActionId);
+
             updateGameBoardContent();
             updateHighlighting();
         },

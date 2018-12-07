@@ -25,7 +25,7 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor{
   }
 
   def sendJson() = {
-    out ! JsonConverter.gameBoardToJson()
+    out ! JsonConverter.gameBoardToJson().toString()
   }
 }
 

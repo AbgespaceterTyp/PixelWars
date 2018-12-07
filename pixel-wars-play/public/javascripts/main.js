@@ -164,8 +164,6 @@ function executeAction(rowIndex, colIndex) {
 
 function connectWebSocket() {
     let websocket = new WebSocket("ws://localhost:9000/websocket");
-    websocket.setTimeout
-
     websocket.onopen = function(event) {
         console.log("Connected to Websocket");
     };

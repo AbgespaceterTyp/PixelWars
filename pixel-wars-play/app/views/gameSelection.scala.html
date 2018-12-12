@@ -3,15 +3,23 @@
 @main("Gameselection")(controller) {
     <body>
         <h1>Select your next adventure!</h1>
-        <p>
+        <div class="card-deck">
         @for(scenarioId <- controller.scenarioIds) {
             @if(controller.scenarioName(scenarioId).isDefined) {
                 @defining("/assets/images/Scenario_" + scenarioId + ".png") { scenarioImageName =>
-                    <a href="command/n@scenarioId"><img src="@scenarioImageName"></a>
-                    <a href="command/n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                    <div class="card">
+                        <div class="zoom">
+                            <a href="command/n@scenarioId">
+                                <img class="card-img-top" src="@scenarioImageName" alt="Card image cap">
+                                <div class="card-body">
+                                    <h5 class="card-title">@controller.scenarioName(scenarioId).get</h5>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
                 }
             }
         }
-        </p>
+        </div>
     </body>
 }

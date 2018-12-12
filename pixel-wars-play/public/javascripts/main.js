@@ -16,36 +16,42 @@ function updateActionBar() {
      */
 }
 
-function updateGameBoardContent() {
-    $.ajax({
-        method: "GET",
-        url: "/gameBoardToJson",
-        dataType: "json",
-        contentType: "application/json",
+function showWinner(winner) {
+    console.log("Player " + winner.playerNumber + " wins!");
 
-        success: function (result) {
-            console.log("json=" + result);
+    let gameBoard = document.getElementById("gameBoard");
+    while (gameBoard.firstChild) {
+        gameBoard.removeChild(gameBoard.firstChild);
+    }
+    let statusbar = document.getElementById("statusbar");
+    statusbar.parentNode.removeChild(statusbar);
 
-            let gameBoard = document.getElementById("gameBoard");
-            let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
-            // clear previous content
-            for (let i = 0; i < gameBoardCell.length; i++) {
-                let cell = gameBoardCell.item(i);
-                cell.src = "/assets/images/placeholder.png";
-            }
+    let actionbar = document.getElementById("actionbar");
+    actionbar.parentNode.removeChild(actionbar);
 
-            // find and update cells
-            for(let j = 0; j < result.length; j++) {
-                let gameObj = result[j];
-                let cellToUpdate = document.getElementById("gameBoardCell_" + gameObj.rowIdx + "_" + gameObj.columnIdx);
-                console.log("cell src=" + cellToUpdate.src);
-                cellToUpdate.src = "/assets/" + gameObj.imagePath;
-            }
-        },
-        error: function () {
-            console.log("Failed to get json");
-        }
-    });
+    gameBoard.style.backgroundImage = "url(/assets/images/background_won_blue.png)";
+
+    alert("Player " + winner.playerNumber + " wins!");
+}
+
+function updateGameBoardContent(json) {
+    console.log("update game board");
+
+    let gameBoard = document.getElementById("gameBoard");
+    let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
+    // clear previous content
+    for (let i = 0; i < gameBoardCell.length; i++) {
+        let cell = gameBoardCell.item(i);
+        cell.src = "/assets/images/placeholder.png";
+    }
+
+    // find and update cells
+    for(let j = 0; j < json.length; j++) {
+        let gameObj = json[j];
+        let cellToUpdate = document.getElementById("gameBoardCell_" + gameObj.rowIdx + "_" + gameObj.columnIdx);
+        console.log("cell src=" + cellToUpdate.src);
+        cellToUpdate.src = "/assets/" + gameObj.imagePath;
+    }
 }
 
 function updateGameBoardScale(){
@@ -91,7 +97,7 @@ function updateGameBoardBackgroundImage(){
 }
 
 function registerActionbarListeners() {
-    $(".action").click(function (event) {
+    $(".action").click(function () {
         activeActionId = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
         console.log("Activated action with id=" + activeActionId);
         updateHighlighting();
@@ -106,7 +112,7 @@ function updateHighlighting() {
         dataType: "json",
 
         success: function (result) {
-            console.log("Received cells to updateHighlighting=" + result);
+            console.log("Received cells to updateHighlighting");
 
             let gameBoard = document.getElementById("gameBoard");
             let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
@@ -130,7 +136,7 @@ function updateHighlighting() {
 }
 
 function registerCellListeners() {
-    $(".gameBoardCell").click(function (event) {
+    $(".gameBoardCell").click(function () {
         let targetRow = this.id.substring(this.id.indexOf("_") + 1, this.id.lastIndexOf("_"));
         let targetCol = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
         console.log("Clicked cell at row=" + targetRow + ", col=" + targetCol);
@@ -166,10 +172,8 @@ function executeAction(rowIndex, colIndex) {
         url: "/executeAction/" + activeActionId + "/" + rowIndex + "/" + colIndex,
         dataType: "text",
 
-        success: function (result) {
+        success: function () {
             console.log("Executed action=" + activeActionId);
-
-            updateGameBoardContent();
             updateHighlighting();
         },
         error: function () {
@@ -180,7 +184,7 @@ function executeAction(rowIndex, colIndex) {
 
 function connectWebSocket() {
     let websocket = new WebSocket("ws://localhost:9000/websocket");
-    websocket.onopen = function(event) {
+    websocket.onopen = function() {
         console.log("Connected to Websocket");
     };
 
@@ -192,10 +196,19 @@ function connectWebSocket() {
         console.log('Error in Websocket Occured: ' + error);
     };
 
-    websocket.onmessage = function (e) {
-        console.log("got message=" + e.data)
+    websocket.onmessage = function (message) {
+        console.log("got message");
 
-        updateStatusBar("Lukas", 5, 3);
+        let data = JSON.parse(message.data);
+        if(data.eventType == null){
+            updateGameBoardContent(data)
+        } else if (data.eventType.startsWith("PlayerWon")) {
+            showWinner(data)
+        } else {
+            // TODO handle other events
+        }
+
+        //updateStatusBar("Lukas", 5, 3);
         updateActionBar();
     };
 }
@@ -203,7 +216,6 @@ function connectWebSocket() {
 $(document).ready(function () {
     updateGameBoardScale();
     updateGameBoardBackgroundImage();
-    updateGameBoardContent();
 
     registerActionbarListeners();
     registerCellListeners();

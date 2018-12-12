@@ -4,6 +4,8 @@ GET     /about                                             controllers.WuiContro
 
 GET     /control                                           controllers.WuiController.control
 
+GET     /gameSelection                                     controllers.WuiController.gameSelection
+
 GET     /command/:line                                     controllers.WuiController.command(line:String)
 
 GET     /executeAction/:actionId/:rowIndex/:columnIndex    controllers.WuiController.executeAction(actionId:Int,rowIndex:Int,columnIndex:Int)

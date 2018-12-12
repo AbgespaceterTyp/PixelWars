@@ -20,6 +20,10 @@ class WuiController @Inject()(implicit system: ActorSystem, materializer: Materi
     Ok(views.html.about(controller))
   }
 
+  def gameSelection() = Action {
+    Ok(views.html.gameSelection(controller))
+  }
+
   def control() = Action {
     Ok(views.html.control(controller))
   }

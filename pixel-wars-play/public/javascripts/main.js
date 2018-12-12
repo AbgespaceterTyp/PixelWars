@@ -1,9 +1,9 @@
 let activeActionId = -1;
 
 function updateStatusBar(playerName, hp, ap) {
-    document.getElementsByClassName("activePlayer").textContent = "Turn: " + playerName;
-    document.getElementsByClassName("activePlayerHealth").textContent = "HP: " + hp;
-    document.getElementsByClassName("activePlayerAP").textContent = "AP: " + ap;
+    document.getElementById("activePlayer").textContent = "Turn: " + playerName;
+    document.getElementById("activePlayerHealth").textContent = "HP: " + hp;
+    document.getElementById("activePlayerAP").textContent = "AP: " + ap;
 }
 
 function updateActionBar() {

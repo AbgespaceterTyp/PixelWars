@@ -7,7 +7,12 @@ function updateStatusBar(playerName, hp, ap) {
 }
 
 function updateActionBar() {
-    /*
+    /*let actionbar = document.getElementById("actionbar");
+    while (actionbar.firstChild) {
+        actionbar.removeChild(actionbar.firstChild);
+    }
+
+
     <div id="actionbar" class="switch-toggle switch-candy">
         @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
             <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></input>
@@ -29,7 +34,7 @@ function showWinner(winner) {
     let actionbar = document.getElementById("actionbar");
     actionbar.parentNode.removeChild(actionbar);
 
-    gameBoard.style.backgroundImage = "url(/assets/images/background_won_blue.png)";
+    gameBoard.style.backgroundImage = "url(/assets/" + winner.wonImagePath + ")";
 
     alert("Player " + winner.playerNumber + " wins!");
 }
@@ -100,6 +105,7 @@ function registerActionbarListeners() {
     $(".action").click(function () {
         activeActionId = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
         console.log("Activated action with id=" + activeActionId);
+
         updateHighlighting();
     });
 }
@@ -174,6 +180,7 @@ function executeAction(rowIndex, colIndex) {
 
         success: function () {
             console.log("Executed action=" + activeActionId);
+
             updateHighlighting();
         },
         error: function () {

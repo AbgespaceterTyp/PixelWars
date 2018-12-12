@@ -1,0 +1,17 @@
+@(controller: de.htwg.se.msiwar.controller.Controller)
+
+@main("Gameselection")(controller) {
+    <body>
+        <h1>Select your next adventure!</h1>
+        <p>
+        @for(scenarioId <- controller.scenarioIds) {
+            @if(controller.scenarioName(scenarioId).isDefined) {
+                @defining("/assets/images/Scenario_" + scenarioId + ".png") { scenarioImageName =>
+                    <a href="command/n@scenarioId"><img src="@scenarioImageName"></a>
+                    <a href="command/n@scenarioId">@controller.scenarioName(scenarioId).get</a>
+                }
+            }
+        }
+        </p>
+    </body>
+}

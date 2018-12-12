@@ -12,20 +12,24 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor{
 
   override def receive: Receive = {
     // at the moment msg is ignored and we sent always game board as json
-    case msg: String => out ! sendJson
+    case _: String => out ! sendJson()
   }
 
   // TODO send event specific content
   reactions += {
     case _: CellChanged => sendJson()
     case _: TurnStarted => sendJson()
-    case _: PlayerWon => sendJson()
+    case _: PlayerWon => sendPlayerWon(_)
     case _: GameStarted => sendJson()
     case _: AttackResult => sendJson()
   }
 
-  def sendJson() = {
+  def sendJson() : Unit = {
     out ! JsonConverter.gameBoardToJson().toString()
+  }
+
+  def sendPlayerWon(playerWonEvent: PlayerWon) : Unit = {
+    out ! JsonConverter.playerWonToJson(playerWonEvent).toString()
   }
 }
 

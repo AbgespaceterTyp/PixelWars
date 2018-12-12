@@ -31,7 +31,7 @@ function updateGameBoardContent() {
             // clear previous content
             for (let i = 0; i < gameBoardCell.length; i++) {
                 let cell = gameBoardCell.item(i);
-                cell.src = "";
+                cell.src = "/assets/images/placeholder.png";
             }
 
             // find and update cells

@@ -15,7 +15,6 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor{
     case _: String => out ! sendJson()
   }
 
-  // TODO send event specific content
   reactions += {
     case _: CellChanged => sendJson()
     case _: TurnStarted => sendJson()

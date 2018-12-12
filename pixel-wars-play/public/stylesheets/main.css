@@ -59,6 +59,10 @@ img{
     border-color: black;
 }
 
+.gameBoardCell:hover{
+    border-color: red;
+}
+
 .gameBoardRow {
     height: 60px;
     padding: 0px;
@@ -66,5 +70,9 @@ img{
 
 .highlight {
     border-style: solid;
-    border-color: yellow;
+    border-color: dodgerblue;
+}
+
+.highlight:hover{
+    border-color: blue;
 }

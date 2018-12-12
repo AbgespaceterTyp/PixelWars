@@ -34,6 +34,15 @@ function showWinner(winner) {
     let actionbar = document.getElementById("actionbar");
     actionbar.parentNode.removeChild(actionbar);
 
+    gameBoard.style.height = 600 + "px";
+    gameBoard.style.minHeight = 600 + "px";
+    gameBoard.style.width = 600 + "px";
+    gameBoard.style.minWidth = 600 + "px";
+
+    gameBoard.style.display = "block";
+    gameBoard.style.marginLeft = "auto";
+    gameBoard.style.marginRight = "auto";
+
     gameBoard.style.backgroundImage = "url(/assets/" + winner.wonImagePath + ")";
 
     alert("Player " + winner.playerNumber + " wins!");
@@ -49,7 +58,7 @@ function updateGameBoardContent(json) {
     }
 
     // find and update cells
-    for(let j = 0; j < json.length; j++) {
+    for (let j = 0; j < json.length; j++) {
         let gameObj = json[j];
         let cellToUpdate = document.getElementById("gameBoardCell_" + gameObj.rowIdx + "_" + gameObj.columnIdx);
         console.log("cell src=" + cellToUpdate.src);
@@ -57,7 +66,7 @@ function updateGameBoardContent(json) {
     }
 }
 
-function updateGameBoardScale(){
+function updateGameBoardScale() {
     let gameBoard = document.getElementById("gameBoard");
 
     let gameBoardRow = gameBoard.getElementsByClassName("gameBoardRow");
@@ -81,7 +90,7 @@ function updateGameBoardScale(){
     gameBoard.style.marginRight = "auto";
 }
 
-function updateGameBoardBackgroundImage(){
+function updateGameBoardBackgroundImage() {
     $.ajax({
         method: "GET",
         url: "/backgroundImage",
@@ -89,7 +98,7 @@ function updateGameBoardBackgroundImage(){
 
         success: function (result) {
             console.log("Loaded background image=" + result);
-            
+
             let gameBoard = document.getElementById("gameBoard");
             gameBoard.style.backgroundImage = "url(/assets/" + result + ")";
         },
@@ -126,7 +135,7 @@ function updateHighlighting() {
                 cell.classList.remove("highlight");
             }
 
-            for(let j = 0; j < result.length; j++) {
+            for (let j = 0; j < result.length; j++) {
                 let tuple = result[j];
                 let cellToHighlight = document.getElementById("gameBoardCell_" + tuple.rowIdx + "_" + tuple.columnIdx);
                 console.log("cellIdToHighlight=" + cellToHighlight);
@@ -189,7 +198,7 @@ function executeAction(rowIndex, colIndex) {
 
 function connectWebSocket() {
     let websocket = new WebSocket("ws://localhost:9000/websocket");
-    websocket.onopen = function() {
+    websocket.onopen = function () {
         console.log("Connected to Websocket");
     };
 
@@ -203,7 +212,7 @@ function connectWebSocket() {
 
     websocket.onmessage = function (message) {
         let data = JSON.parse(message.data);
-        if(data.eventType == null){
+        if (data.eventType == null) {
             console.log('default message received -> update game board');
             updateGameBoardContent(data)
         } else if (data.eventType.startsWith("PlayerWon")) {

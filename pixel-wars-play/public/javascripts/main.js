@@ -40,8 +40,6 @@ function showWinner(winner) {
 }
 
 function updateGameBoardContent(json) {
-    console.log("update game board");
-
     let gameBoard = document.getElementById("gameBoard");
     let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
     // clear previous content
@@ -204,19 +202,21 @@ function connectWebSocket() {
     };
 
     websocket.onmessage = function (message) {
-        console.log("got message");
-
         let data = JSON.parse(message.data);
         if(data.eventType == null){
+            console.log('default message received -> update game board');
             updateGameBoardContent(data)
         } else if (data.eventType.startsWith("PlayerWon")) {
+            console.log('player won message received -> show winner');
             showWinner(data)
-        } else {
-            // TODO handle other events
+        } else if (data.eventType.startsWith("TurnStarted")) {
+            console.log('turn started message received -> update status and action bar');
+            updateStatusBar(data.playerName, data.hp, data.ap);
+            updateActionBar();
+        } else if (data.eventType.startsWith("AttackResult")) {
+            console.log('attack result message received -> show result');
+            // TODO show result on screen
         }
-
-        //updateStatusBar("Lukas", 5, 3);
-        updateActionBar();
     };
 }
 

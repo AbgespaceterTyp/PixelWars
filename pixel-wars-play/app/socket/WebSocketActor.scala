@@ -16,11 +16,11 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor{
   }
 
   reactions += {
-    case cellChanged: CellChanged => sendJson()
-    case turnStarted: TurnStarted => sendJson()
+    case turnStarted: TurnStarted => sendTurnStarted(turnStarted)
     case playerWon: PlayerWon => sendPlayerWon(playerWon)
-    case gameStarted: GameStarted => sendJson()
-    case attackResult: AttackResult => sendJson()
+    case attackResult: AttackResult => sendAttackResult(attackResult)
+    case _: CellChanged => sendJson()
+    case _: GameStarted => sendJson()
   }
 
   def sendJson() : Unit = {
@@ -29,6 +29,14 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor{
 
   def sendPlayerWon(playerWonEvent: PlayerWon) : Unit = {
     out ! JsonConverter.playerWonToJson(playerWonEvent).toString()
+  }
+
+  def sendTurnStarted(turnStarted: TurnStarted) : Unit = {
+    out ! JsonConverter.turnStartedToJson(turnStarted).toString()
+  }
+
+  def sendAttackResult(attackResult: AttackResult) : Unit = {
+    out ! JsonConverter.attackResultToJson(attackResult).toString()
   }
 }
 

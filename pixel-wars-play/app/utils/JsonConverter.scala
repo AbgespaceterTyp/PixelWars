@@ -1,7 +1,7 @@
 package utils
 
 import de.htwg.se.msiwar.aview.MainApp.controller
-import de.htwg.se.msiwar.controller.PlayerWon
+import de.htwg.se.msiwar.controller.{AttackResult, PlayerWon, TurnStarted}
 import de.htwg.se.msiwar.model._
 import play.api.libs.json._
 
@@ -37,17 +37,50 @@ object JsonConverter {
   }
 
   implicit def playerWon = new Writes[PlayerWon] {
-    override def writes(playerWon: PlayerWon): JsValue = {
+    override def writes(playerWonEvent: PlayerWon): JsValue = {
       Json.obj(
         "eventType" -> PlayerWon.getClass.getSimpleName,
-        "playerNumber" -> playerWon.playerNumber,
-        "wonImagePath" -> playerWon.wonImagePath,
+        "playerNumber" -> playerWonEvent.playerNumber,
+        "wonImagePath" -> playerWonEvent.wonImagePath,
+      )
+    }
+  }
+
+  implicit def turnStarted = new Writes[TurnStarted] {
+    override def writes(turnStartedEvent: TurnStarted): JsValue = {
+      Json.obj(
+        "eventType" -> TurnStarted.getClass.getSimpleName,
+        "playerNumber" -> turnStartedEvent.playerNumber,
+        "playerName" -> controller.activePlayerName,
+        "hp" -> controller.activePlayerHealthPoints,
+        "ap" -> controller.activePlayerActionPoints,
+      )
+    }
+  }
+
+  implicit def attackResult = new Writes[AttackResult] {
+    override def writes(attackResultEvent: AttackResult): JsValue = {
+      Json.obj(
+        "eventType" -> AttackResult.getClass.getSimpleName,
+        "rowIdx" -> attackResultEvent.rowIndex,
+        "columnIdx" -> attackResultEvent.columnIndex,
+        "hit" -> attackResultEvent.hit,
+        "imagePath" -> attackResultEvent.attackImagePath,
+        "soundPath" -> attackResultEvent.attackSoundPath,
       )
     }
   }
 
   def playerWonToJson(playerWonEvent: PlayerWon) : JsValue = {
     playerWon.writes(playerWonEvent)
+  }
+
+  def turnStartedToJson(turnStartedEvent: TurnStarted) : JsValue = {
+    turnStarted.writes(turnStartedEvent)
+  }
+
+  def attackResultToJson(attackResultEvent: AttackResult) : JsValue = {
+    attackResult.writes(attackResultEvent)
   }
 
   def gameBoardToJson() : JsValue = {

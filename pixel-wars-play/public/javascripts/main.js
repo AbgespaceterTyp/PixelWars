@@ -58,8 +58,6 @@ function showWinner(winner) {
     gameBoard.style.marginRight = "auto";
 
     gameBoard.style.backgroundImage = "url(/assets/" + winner.wonImagePath + ")";
-
-    alert("Player " + winner.playerNumber + " wins!");
 }
 
 function updateGameBoardContent(json) {

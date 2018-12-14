@@ -54,6 +54,8 @@ object JsonConverter {
         "playerName" -> controller.activePlayerName,
         "hp" -> controller.activePlayerHealthPoints,
         "ap" -> controller.activePlayerActionPoints,
+        "actionIds" -> controller.actionIds(turnStartedEvent.playerNumber),
+        "actionImagePaths" -> controller.actionIds(turnStartedEvent.playerNumber).map(controller.actionIconPath(_).get),
       )
     }
   }

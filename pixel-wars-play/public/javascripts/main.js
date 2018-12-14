@@ -6,19 +6,33 @@ function updateStatusBar(playerName, hp, ap) {
     document.getElementById("activePlayerAP").textContent = "AP: " + ap;
 }
 
-function updateActionBar() {
-    /*let actionbar = document.getElementById("actionbar");
+function updateActionBar(actionIds, actionImagePaths) {
+    activeActionId = -1;
+
+    // Clear previous content
+    let actionbar = document.getElementById("actionbar");
     while (actionbar.firstChild) {
         actionbar.removeChild(actionbar.firstChild);
     }
 
+    // Create new actions
+    for (let i = 0; i < actionIds.length; i++) {
+        let actionId = actionIds[i];
+        let actionImagePath = actionImagePaths[i];
 
-    <div id="actionbar" class="switch-toggle switch-candy">
-        @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
-            <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></input>
-        }
-        </div>
-     */
+        let input = document.createElement("input");
+        input.id = "action_" + actionId;
+        input.name = "actions"
+        input.type = "radio";
+        input.onclick = "";
+        input.classList.add("action");
+
+        let img = document.createElement("img");
+        img.src = "/assets/" + actionImagePath;
+        actionbar.appendChild(img);
+        actionbar.appendChild(input);
+    }
+    registerActionbarListeners();
 }
 
 function showWinner(winner) {
@@ -221,7 +235,7 @@ function connectWebSocket() {
         } else if (data.eventType.startsWith("TurnStarted")) {
             console.log('turn started message received -> update status and action bar');
             updateStatusBar(data.playerName, data.hp, data.ap);
-            updateActionBar();
+            updateActionBar(data.actionIds, data.actionImagePaths);
         } else if (data.eventType.startsWith("AttackResult")) {
             console.log('attack result message received -> show result');
             // TODO show result on screen

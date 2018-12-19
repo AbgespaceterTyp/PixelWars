@@ -39,6 +39,6 @@ The original game "Pixel Tank Wars" with a functional web ui and support for the
 
 ## Target
 
-Destroy all other players.
+Destroy all other players. Win the war!
 
 ![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/background_won_blue.png "Win the war!")

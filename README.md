@@ -21,9 +21,21 @@ The original game "Pixel Tank Wars" with a functional web ui and support for the
 
 ### Tank classes
 
-![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/light_tank_blue_0.png "Light Tank")
-![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/medium_tank_blue_0.png "Medium Tank")
-![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/heavy_tank_blue_0.png "Heavy Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/light_tank_blue_90.png "Light Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/medium_tank_blue_90.png "Medium Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/heavy_tank_blue_90.png "Heavy Tank")
+
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/light_tank_red_90.png "Light Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/medium_tank_red_90.png "Medium Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/heavy_tank_red_90.png "Heavy Tank")
+
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/light_tank_purple_90.png "Light Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/medium_tank_purple_90.png "Medium Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/heavy_tank_purple_90.png "Heavy Tank")
+
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/light_tank_brown_90.png "Light Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/medium_tank_brown_90.png "Medium Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/heavy_tank_brown_90.png "Heavy Tank")
 
 ## Target
 

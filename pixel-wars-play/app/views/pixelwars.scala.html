@@ -5,11 +5,12 @@
     <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
     <script src="https://unpkg.com/@@webcomponents/webcomponentsjs@@latest/webcomponents-loader.js"></script>
-    <script src="@routes.Assets.versioned("javascripts/polymer/status-bar.js")"></script>
+    <script src="@routes.Assets.versioned("polymer/status-bar.js")"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
     <body>
         <status-bar player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
-        ap="@controller.activePlayerActionPoints" maxAp="@controller.activePlayerActionPoints"></status-bar>
+            ap="@controller.activePlayerActionPoints" maxAp="@controller.activePlayerActionPoints">
+        </status-bar>
         <div id="gameBoard">
         @for(row <- 0 until controller.rowCount) {
             <div class="gameBoardRow">

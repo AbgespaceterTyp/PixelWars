@@ -29,13 +29,16 @@ class StatusBar extends LitElement {
         return html `
         <style>
             #statusBar {margin-top: 2%; text-align: center;}
+            #activePlayer {}
+            #activePlayerHealth {}
+            #activePlayerAP {}
             .hp {color: red; border: red; width: ${this.hp * 32}px; height: 32px; 
             background-image: url("../images/action_attack.png"); background-repeat: repeat; display: inline-block;}
-            .hp-empty {color: black; border: red; width: ${((this.hp - this.maxHp) * 32) + 1}px; height: 32px; 
+            .hp-empty {color: black; border: red; width: ${((this.maxHp-this.hp) * 32) + 1}px; height: 32px; 
             background-image: url("../images/action_wait.png");  background-repeat: repeat; display: inline-block;}
             .ap {color: yellow; border: yellow; width: ${this.ap * 32}px; height: 32px; background-repeat: repeat; 
             background-image: url("../images/action_move.png"); background-repeat: repeat; display: inline-block;}
-            .ap-empty {color: black; border: yellow; width: ${((this.ap - this.maxAp) * 32) + 1}px; height: 32px; 
+            .ap-empty {color: black; border: yellow; width: ${((this.maxAp-this.ap) * 32) + 1}px; height: 32px; 
             background-image: url("../images/action_wait.png"); background-repeat: repeat; display: inline-block;}
         </style>
         <div id="statusBar">

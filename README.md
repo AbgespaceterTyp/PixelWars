@@ -1,6 +1,7 @@
 # PixelWars
 
-![Alt-Text](/pixel-wars-play/public/images/background_opening.jpg "Pixel Tank Wars")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/background_opening.png "Pixel Tank Wars")
+
 A Turn-Based strategy game.
 
 ## About
@@ -12,19 +13,20 @@ The original game "Pixel Tank Wars" with a functional web ui and support for the
 
 ### Scenarios
 
-![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/master/pixel-wars-play/public/images/Scenario_0.jpg "Black Wood Battle")
-![Alt-Text](/pixel-wars-play/public/images/Scenario_1.jpg "Grand Canyon")
-![Alt-Text](/pixel-wars-play/public/images/Scenario_2.jpg "Desert War")
-![Alt-Text](/pixel-wars-play/public/images/Scenario_3.jpg "Showdown in the Alps")
-![Alt-Text](/pixel-wars-play/public/images/Scenario_4.jpg "Back Hawk Down")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/Scenario_0.png "Black Wood Battle")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/Scenario_1.png "Grand Canyon")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/Scenario_2.png "Desert War")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/Scenario_3.png "Showdown in the Alps")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/Scenario_4.png "Back Hawk Down")
 
 ### Tank classes
 
-![Alt-Text](/pixel-wars-play/public/images/light_tank_blue_0.jpg "Light Tank")
-![Alt-Text](/pixel-wars-play/public/images/medium_tank_blue_0.jpg "Medium Tank")
-![Alt-Text](/pixel-wars-play/public/images/heavy_tank_blue_0.jpg "Heavy Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/light_tank_blue_0.png "Light Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/medium_tank_blue_0.png "Medium Tank")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/heavy_tank_blue_0.png "Heavy Tank")
 
 ## Target
 
 Destroy all other players.
-![Alt-Text](/pixel-wars-play/public/images/background_won_blue.jpg "Win the war!")
+
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/blob/master/pixel-wars-play/public/images/background_won_blue.png "Win the war!")

@@ -12,7 +12,7 @@ The original game "Pixel Tank Wars" with a functional web ui and support for the
 
 ### Scenarios
 
-![Alt-Text](pixel-wars-play/public/images/Scenario_0.jpg "Black Wood Battle")
+![Alt-Text](https://github.com/AbgespaceterTyp/PixelWars/master/pixel-wars-play/public/images/Scenario_0.jpg "Black Wood Battle")
 ![Alt-Text](/pixel-wars-play/public/images/Scenario_1.jpg "Grand Canyon")
 ![Alt-Text](/pixel-wars-play/public/images/Scenario_2.jpg "Desert War")
 ![Alt-Text](/pixel-wars-play/public/images/Scenario_3.jpg "Showdown in the Alps")

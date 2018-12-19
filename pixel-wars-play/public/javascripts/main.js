@@ -42,8 +42,8 @@ function showWinner(winner) {
     while (gameBoard.firstChild) {
         gameBoard.removeChild(gameBoard.firstChild);
     }
-    let statusbar = document.getElementById("statusbar");
-    statusbar.parentNode.removeChild(statusbar);
+    let statusBar = document.getElementById("statusBar");
+    statusBar.parentNode.removeChild(statusBar);
 
     let actionbar = document.getElementById("actionbar");
     actionbar.parentNode.removeChild(actionbar);

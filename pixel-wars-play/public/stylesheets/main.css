@@ -37,6 +37,26 @@ img{
     text-align: center;
 }
 
+.hp {
+    color: red;
+    border: red;
+}
+
+.hp-empty {
+    color: black;
+    border: red;
+}
+
+.ap {
+    color: yellow;
+    border: yellow;
+}
+
+.ap-empty {
+    color: black;
+    border: yellow;
+}
+
 #actionbar {
     margin-top: 2%;
     text-align: center;

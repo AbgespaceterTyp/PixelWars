@@ -28,8 +28,12 @@
         </div>
         <div id="actionbar" class="switch-toggle switch-candy">
         @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
-            <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></input>
-        }
+                   <label>
+                    <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""></input>
+                    <img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/>
+                </label>
+                }
+
         </div>
     </body>
 }

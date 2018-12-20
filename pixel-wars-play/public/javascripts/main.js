@@ -24,7 +24,6 @@ function updateActionBar(actionIds, actionImagePaths) {
         input.id = "action_" + actionId;
         input.name = "actions"
         input.type = "radio";
-        input.onclick = "";
         input.classList.add("action");
 
         let img = document.createElement("img");

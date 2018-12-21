@@ -39,7 +39,7 @@ class WuiController @Inject()(implicit system: ActorSystem, materializer: Materi
 
   def executeAction(actionId: Int, rowIndex: Int, columnIndex: Int) = Action {
     controller.executeAction(actionId, rowIndex, columnIndex)
-    Ok(views.html.pixelwars(controller))
+    Ok(JsonConverter.playStatusToJson())
   }
 
   def canExecuteAction(actionId: Int, rowIndex: Int, columnIndex: Int) = Action {
@@ -51,11 +51,11 @@ class WuiController @Inject()(implicit system: ActorSystem, materializer: Materi
     Ok(JsonConverter.tuples.writes(cells))
   }
 
-  def gameBoardToJson() = Action {
+  def gameBoard() = Action {
     Ok(JsonConverter.gameBoardToJson())
   }
 
-  def socket = WebSocket.accept[String, String] { request =>
+  def socket = WebSocket.accept[String, String] { _ =>
     ActorFlow.actorRef(out => WebSocketActor.props(out))
   }
 }

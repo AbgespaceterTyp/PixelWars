@@ -16,7 +16,7 @@ GET     /backgroundImage                                   controllers.WuiContro
 
 GET     /cellsInRange/:actionId                            controllers.WuiController.cellsInRange(actionId:Int)
 
-GET     /gameBoardToJson                                   controllers.WuiController.gameBoardToJson
+GET     /gameBoard                                         controllers.WuiController.gameBoard
 
 GET     /websocket                                         controllers.WuiController.socket
 

@@ -199,9 +199,11 @@ function executeAction(rowIndex, colIndex) {
         url: "/executeAction/" + activeActionId + "/" + rowIndex + "/" + colIndex,
         dataType: "text",
 
-        success: function () {
+        success: function (result) {
             console.log("Executed action=" + activeActionId);
 
+            let playerStatus = JSON.parse(result);
+            updateStatusBar(playerStatus.playerName, playerStatus.hp, playerStatus.ap)
             updateHighlighting();
         },
         error: function () {

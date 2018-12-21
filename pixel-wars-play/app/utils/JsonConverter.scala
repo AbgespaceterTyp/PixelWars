@@ -97,4 +97,12 @@ object JsonConverter {
     }
     JsonConverter.gameObjects.writes(list.toList)
   }
+
+    def playStatusToJson() : JsValue = {
+      Json.obj(
+        "playerName" -> controller.activePlayerName,
+        "hp" -> controller.activePlayerHealthPoints,
+        "ap" -> controller.activePlayerActionPoints,
+      )
+  }
 }

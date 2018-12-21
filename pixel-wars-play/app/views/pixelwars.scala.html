@@ -29,13 +29,12 @@
         }
         </div>
         <div id="actionbar" class="switch-toggle switch-candy">
-            <h1>Actionbar</h1>
-            <li v-for="action in actions">
-                <label>
+            <span v-for="action in actions">
+                <label class="actionContainer">
                     <input class="action" :id="'action_' + action.id" name="actions" type="radio" onclick=""/>
                     <img :src="'/assets/' + action.iconPath"/>
                 </label>
-            </li>
+            </span>
         </div>
     </body>
 }

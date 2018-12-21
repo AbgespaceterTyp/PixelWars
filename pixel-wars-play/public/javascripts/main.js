@@ -1,9 +1,12 @@
 let activeActionId = -1;
 
 function updateStatusBar(playerName, hp, ap) {
-    document.getElementById("activePlayer").textContent = "Turn: " + playerName;
-    document.getElementById("activePlayerHealth").textContent = "HP: " + hp;
-    document.getElementById("activePlayerAP").textContent = "AP: " + ap;
+    let statusBar = document.getElementById("statusBar");
+    statusBar.player = playerName;
+    statusBar.hp = hp;
+    statusBar.maxHp = hp;
+    statusBar.ap = ap;
+    statusBar.maxAp = ap;
 }
 
 function updateActionBar(actionIds, actionImagePaths) {

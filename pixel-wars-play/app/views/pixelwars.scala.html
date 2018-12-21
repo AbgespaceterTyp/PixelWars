@@ -4,8 +4,10 @@
     <script src="@routes.Assets.versioned("javascripts/jquery-3.3.1.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"></script>
     <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/vue.js")"></script>
     <script src="https://unpkg.com/@@webcomponents/webcomponentsjs@@latest/webcomponents-loader.js"></script>
     <script src="@routes.Assets.versioned("polymer/status-bar.js")" type="module"></script>
+    <script src="@routes.Assets.versioned("vue/action-bar.js")" type="module"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
     <body>
         <status-bar id="statusBar" player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
@@ -27,13 +29,13 @@
         }
         </div>
         <div id="actionbar" class="switch-toggle switch-candy">
-        @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
-                   <label>
-                    <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""></input>
-                    <img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/>
+            <h1>Actionbar</h1>
+            <li v-for="action in actions">
+                <label>
+                    <input class="action" :id="'action_' + action.id" name="actions" type="radio" onclick=""/>
+                    <img :src="'/assets/' + action.iconPath"/>
                 </label>
-                }
-
+            </li>
         </div>
     </body>
 }

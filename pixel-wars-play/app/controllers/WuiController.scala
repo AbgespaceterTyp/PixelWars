@@ -55,6 +55,10 @@ class WuiController @Inject()(implicit system: ActorSystem, materializer: Materi
     Ok(JsonConverter.gameBoardToJson())
   }
 
+  def actions() = Action {
+    Ok(JsonConverter.actionsForPlayerToJson(controller.activePlayerNumber))
+  }
+
   def socket = WebSocket.accept[String, String] { _ =>
     ActorFlow.actorRef(out => WebSocketActor.props(out))
   }

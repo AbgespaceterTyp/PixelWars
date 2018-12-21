@@ -107,9 +107,8 @@ object JsonConverter {
   }
 
   def actionsForPlayerToJson(playerId:Int) : JsValue = {
-    val actions = new JsArray()
-    controller.actionIds(playerId).foreach(actionId => actions :+
-    Json.obj(
+    var actions = new JsArray()
+    controller.actionIds(playerId).foreach(actionId => actions = actions :+ Json.obj(
       "id" -> actionId,
       "damage" -> controller.actionDamage(actionId),
       "description" -> controller.actionDescription(actionId),

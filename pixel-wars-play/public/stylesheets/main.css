@@ -52,11 +52,12 @@ img{
     float: left;
     border-style: solid;
     border-color: black;
-    border-width: 2px;
+    border-width: 1px;
 }
 
 .gameBoardCell:hover{
     border-color: red;
+    border-width: 2px;
 }
 
 .gameBoardRow {
@@ -67,10 +68,12 @@ img{
 .highlight {
     border-style: solid;
     border-color: dodgerblue;
+    border-width: 2px;
 }
 
 .highlight:hover{
     border-color: blue;
+    border-width: 2px;
 }
 
 .zoom {

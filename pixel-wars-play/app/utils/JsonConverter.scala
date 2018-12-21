@@ -98,11 +98,25 @@ object JsonConverter {
     JsonConverter.gameObjects.writes(list.toList)
   }
 
-    def playStatusToJson() : JsValue = {
+  def playerStatusToJson() : JsValue = {
       Json.obj(
         "playerName" -> controller.activePlayerName,
         "hp" -> controller.activePlayerHealthPoints,
         "ap" -> controller.activePlayerActionPoints,
       )
+  }
+
+  def actionsForPlayerToJson(playerId:Int) : JsValue = {
+    val actions = new JsArray()
+    controller.actionIds(playerId).foreach(actionId => actions :+
+    Json.obj(
+      "id" -> actionId,
+      "damage" -> controller.actionDamage(actionId),
+      "description" -> controller.actionDescription(actionId),
+      "iconPath" -> controller.actionIconPath(actionId),
+      "range" -> controller.actionRange(actionId),
+      "cost" -> controller.actionPointCost(actionId),
+    ))
+    actions
   }
 }

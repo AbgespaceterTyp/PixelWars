@@ -39,7 +39,7 @@ class WuiController @Inject()(implicit system: ActorSystem, materializer: Materi
 
   def executeAction(actionId: Int, rowIndex: Int, columnIndex: Int) = Action {
     controller.executeAction(actionId, rowIndex, columnIndex)
-    Ok(JsonConverter.playStatusToJson())
+    Ok(JsonConverter.playerStatusToJson())
   }
 
   def canExecuteAction(actionId: Int, rowIndex: Int, columnIndex: Int) = Action {

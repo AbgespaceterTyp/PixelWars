@@ -9,6 +9,7 @@ body {
 }
 
 h1 {
+    padding: 15px;
     text-align: center;
     font-family:  impact;
     font-size: 50px;
@@ -57,7 +58,7 @@ img{
 
 .gameBoardCell:hover{
     border-color: red;
-    border-width: 2px;
+    border-width: 4px;
 }
 
 .gameBoardRow {
@@ -68,12 +69,12 @@ img{
 .highlight {
     border-style: solid;
     border-color: dodgerblue;
-    border-width: 2px;
+    border-width: 3px;
 }
 
 .highlight:hover{
     border-color: blue;
-    border-width: 2px;
+    border-width: 4px;
 }
 
 .zoom {
@@ -104,4 +105,8 @@ img{
 /* CHECKED STYLES */
 [type=radio]:checked + img {
     outline: 2px solid #f00;
+}
+br {
+    display: block;
+    margin: 6px 0;
 }

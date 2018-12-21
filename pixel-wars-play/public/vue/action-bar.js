@@ -12,6 +12,12 @@ new Vue({
         this.fetchData()
     },
 
+    filters: {
+        tooltipText: function(action) {
+            return "Aktion \"" + action.description + "\" (Schaden " + action.damage + " HP, Reichweite " + action.range + ", Kosten " + action.cost + " AP)"
+        }
+    },
+
     methods: {
         fetchData: function () {
             let xhr = new XMLHttpRequest();
@@ -22,6 +28,6 @@ new Vue({
                 console.log(xhr.responseText);
             };
             xhr.send()
-        }
-    }
+        },
+    },
 });

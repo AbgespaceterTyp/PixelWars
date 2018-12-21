@@ -32,7 +32,7 @@
             <span v-for="action in actions">
                 <label class="actionContainer">
                     <input class="action" :id="'action_' + action.id" name="actions" type="radio" onclick=""/>
-                    <img :src="'/assets/' + action.iconPath"/>
+                    <img :src="'/assets/' + action.iconPath" v-b-tooltip :title="action | tooltipText" variant="outline-success"/>
                 </label>
             </span>
         </div>

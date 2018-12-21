@@ -8,7 +8,7 @@
     <script src="@routes.Assets.versioned("polymer/status-bar.js")" type="module"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
     <body>
-        <status-bar player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
+        <status-bar id="statusBar" player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
             ap="@controller.activePlayerActionPoints" maxAp="@controller.activePlayerActionPoints">
         </status-bar>
         <div id="gameBoard">

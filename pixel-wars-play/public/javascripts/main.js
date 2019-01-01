@@ -1,3 +1,4 @@
+let websocket = new WebSocket("ws://localhost:9000/websocket");
 let activeActionId = -1;
 
 function updateStatusBar(playerName, hp, ap) {
@@ -7,12 +8,6 @@ function updateStatusBar(playerName, hp, ap) {
     statusBar.maxHp = hp;
     statusBar.ap = ap;
     statusBar.maxAp = ap;
-}
-
-function updateActionBar() {
-    activeActionId = -1;
-
-    actionBarVue.fetchData();
 }
 
 function showWinner(winner) {
@@ -127,7 +122,6 @@ function updateHighlighting() {
             for (let j = 0; j < result.length; j++) {
                 let tuple = result[j];
                 let cellToHighlight = document.getElementById("gameBoardCell_" + tuple.rowIdx + "_" + tuple.columnIdx);
-                console.log("cellIdToHighlight=" + cellToHighlight);
                 cellToHighlight.classList.add("highlight");
             }
         },
@@ -187,8 +181,7 @@ function executeAction(rowIndex, colIndex) {
     });
 }
 
-function connectWebSocket() {
-    let websocket = new WebSocket("ws://localhost:9000/websocket");
+function registerWebSocketListeners() {
     websocket.onopen = function () {
         console.log("Connected to Websocket");
     };
@@ -210,9 +203,8 @@ function connectWebSocket() {
             console.log('player won message received -> show winner');
             showWinner(data)
         } else if (data.eventType.startsWith("TurnStarted")) {
-            console.log('turn started message received -> update status and action bar');
+            console.log('turn started message received -> update status bar');
             updateStatusBar(data.playerName, data.hp, data.ap);
-            updateActionBar();
         } else if (data.eventType.startsWith("AttackResult")) {
             console.log('attack result message received -> show result');
             // TODO show result on screen
@@ -225,6 +217,5 @@ $(document).ready(function () {
     updateGameBoardBackgroundImage();
 
     registerCellListeners();
-
-    connectWebSocket();
+    registerWebSocketListeners();
 });

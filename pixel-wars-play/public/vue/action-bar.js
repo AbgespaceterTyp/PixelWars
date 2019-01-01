@@ -1,6 +1,4 @@
-let apiURL = 'https://api.github.com/repos/vuejs/vue/commits?per_page=3&sha=';
-
-new Vue({
+var actionBarVue = new Vue({
 
     el: '#actionbar',
 
@@ -29,5 +27,10 @@ new Vue({
             };
             xhr.send()
         },
+        
+        actionActivated: function (actionId) {
+            console.log("activate action " + actionId);
+            activateAction(actionId);
+        }
     },
 });

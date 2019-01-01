@@ -31,7 +31,7 @@
         <div id="actionbar" class="switch-toggle switch-candy">
             <span v-for="action in actions">
                 <label class="actionContainer">
-                    <input class="action" :id="'action_' + action.id" name="actions" type="radio" onclick=""/>
+                    <input class="action" :id="'action_' + action.id" name="actions" type="radio" v-on:click="actionActivated(action.id)"/>
                     <img :src="'/assets/' + action.iconPath" v-b-tooltip :title="action | tooltipText" variant="outline-success"/>
                 </label>
             </span>

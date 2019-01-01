@@ -9,32 +9,10 @@ function updateStatusBar(playerName, hp, ap) {
     statusBar.maxAp = ap;
 }
 
-function updateActionBar(actionIds, actionImagePaths) {
+function updateActionBar() {
     activeActionId = -1;
 
-    // Clear previous content
-    let actionbar = document.getElementById("actionbar");
-    while (actionbar.firstChild) {
-        actionbar.removeChild(actionbar.firstChild);
-    }
-
-    // Create new actions
-    for (let i = 0; i < actionIds.length; i++) {
-        let actionId = actionIds[i];
-        let actionImagePath = actionImagePaths[i];
-
-        let input = document.createElement("input");
-        input.id = "action_" + actionId;
-        input.name = "actions"
-        input.type = "radio";
-        input.classList.add("action");
-
-        let img = document.createElement("img");
-        img.src = "/assets/" + actionImagePath;
-        actionbar.appendChild(img);
-        actionbar.appendChild(input);
-    }
-    registerActionbarListeners();
+    actionBarVue.fetchData();
 }
 
 function showWinner(winner) {
@@ -122,13 +100,10 @@ function updateGameBoardBackgroundImage() {
     });
 }
 
-function registerActionbarListeners() {
-    $(".action").click(function () {
-        activeActionId = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
-        console.log("Activated action with id=" + activeActionId);
+function activateAction(actionId) {
+    activeActionId = actionId;
 
-        updateHighlighting();
-    });
+    updateHighlighting();
 }
 
 function updateHighlighting() {
@@ -230,14 +205,14 @@ function connectWebSocket() {
         let data = JSON.parse(message.data);
         if (data.eventType == null) {
             console.log('default message received -> update game board');
-            updateGameBoardContent(data)
+            updateGameBoardContent(data);
         } else if (data.eventType.startsWith("PlayerWon")) {
             console.log('player won message received -> show winner');
             showWinner(data)
         } else if (data.eventType.startsWith("TurnStarted")) {
             console.log('turn started message received -> update status and action bar');
             updateStatusBar(data.playerName, data.hp, data.ap);
-            updateActionBar(data.actionIds, data.actionImagePaths);
+            updateActionBar();
         } else if (data.eventType.startsWith("AttackResult")) {
             console.log('attack result message received -> show result');
             // TODO show result on screen
@@ -249,7 +224,6 @@ $(document).ready(function () {
     updateGameBoardScale();
     updateGameBoardBackgroundImage();
 
-    registerActionbarListeners();
     registerCellListeners();
 
     connectWebSocket();

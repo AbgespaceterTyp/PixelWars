@@ -33,6 +33,15 @@ let actionBarVue = new Vue({
             activateAction(actionId);
         }
     },
+
+    template: '<div id="actionbar" class="switch-toggle switch-candy">\n' +
+        '            <span v-for="action in actions">\n' +
+        '                <label class="actionContainer">\n' +
+        '                    <input class="action" :id="\'action_\' + action.id" name="actions" type="radio" v-on:click="actionActivated(action.id)"/>\n' +
+        '                    <img :src="\'/assets/\' + action.iconPath" v-b-tooltip :title="action | tooltipText" variant="outline-success"/>\n' +
+        '                </label>\n' +
+        '            </span>\n' +
+        '        </div>'
 });
 
 function registerWebSocketListeners() {

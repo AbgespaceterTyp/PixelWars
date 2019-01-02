@@ -40,6 +40,12 @@ img {
     margin-bottom: 2%;
 }
 
+.actionContainer{
+    border-style: solid;
+    border-color: #004085;
+    border-width: 15px;
+}
+
 #gameBoard {
     background-color: black;
     margin-top: 2%;
@@ -219,3 +225,4 @@ br {
         opacity: 1
     }
 }
+

@@ -1,5 +1,7 @@
 let websocket = new WebSocket("ws://localhost:9000/websocket");
 let activeActionId = -1;
+let modal;
+let span;
 
 function updateStatusBar(playerName, hp, ap) {
     let statusBar = document.getElementById("statusBar");
@@ -218,4 +220,16 @@ $(document).ready(function () {
 
     registerCellListeners();
     registerWebSocketListeners();
+
+    modal = document.getElementById('myModal');
+    span = document.getElementsByClassName("close")[0];
+    span.onclick = function () {
+        modal.style.display = "none";
+    };
+
+    window.onclick = function (event) {
+        if (event.target === modal) {
+            modal.style.display = "none";
+        }
+    };
 });

@@ -40,16 +40,18 @@ function registerWebSocketListeners() {
         let data = JSON.parse(event.data);
         if (data.eventType != null && data.eventType.startsWith("TurnStarted")) {
             console.log('turn started message received -> update action bar');
-            updateActionBar();
+
+            activeActionId = -1;
+            updateActionBar(data.actions);
         }
     });
 }
 
-function updateActionBar() {
+function updateActionBar(actions) {
     console.log("updateActionBar");
 
     activeActionId = -1;
-    actionBarVue.fetchData();
+    actionBarVue.actions = actions;
 }
 
 $(document).ready(function () {

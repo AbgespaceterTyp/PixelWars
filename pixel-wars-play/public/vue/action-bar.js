@@ -38,7 +38,7 @@ let actionBarVue = new Vue({
         '            <span v-for="action in actions">\n' +
         '                <label class="actionContainer">\n' +
         '                    <input class="action" :id="\'action_\' + action.id" name="actions" type="radio" v-on:click="actionActivated(action.id)"/>\n' +
-        '                    <img :src="\'/assets/\' + action.iconPath" v-b-tooltip :title="action | tooltipText" variant="outline-success"/>\n' +
+        '                    <img :src="\'/assets/\' + action.iconPath" :title="action | tooltipText" variant="outline-success"/>\n' +
         '                </label>\n' +
         '            </span>\n' +
         '        </div>'

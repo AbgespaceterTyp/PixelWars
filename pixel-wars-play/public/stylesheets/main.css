@@ -40,10 +40,22 @@ img {
     margin-bottom: 2%;
 }
 
-.actionContainer{
+.actionContainer {
     border-style: solid;
     border-color: #004085;
-    border-width: 15px;
+    border-width: 2px;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.action {
+    height: 100%;
+    width: 100%;
+}
+
+.actionImage{
+    height: 100%;
+    width: 100%;
 }
 
 #gameBoard {

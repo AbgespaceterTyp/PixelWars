@@ -3,14 +3,16 @@
 :root {
     background-color: #000 !important;
 }
+
 body {
     background-color: #000000;
     color: white;
 }
 
 h1 {
+    padding: 15px;
     text-align: center;
-    font-family:  impact;
+    font-family: impact;
     font-size: 50px;
     background-color: transparent;
 }
@@ -22,7 +24,7 @@ p {
     text-align: center;
 }
 
-img{
+img {
     background-color: transparent;
 }
 
@@ -32,23 +34,35 @@ img{
     margin-right: auto;
 }
 
-#statusbar {
-    margin-top: 2%;
-    text-align: center;
-}
-
 #actionbar {
     margin-top: 2%;
     text-align: center;
     margin-bottom: 2%;
 }
 
+.actionContainer {
+    border-style: solid;
+    border-color: #004085;
+    border-width: 2px;
+    min-width: 50px;
+    min-height: 50px;
+}
+
+.action {
+    height: 100%;
+    width: 100%;
+}
+
+.actionImage{
+    height: 100%;
+    width: 100%;
+}
+
 #gameBoard {
-    background-color: white;
+    background-color: black;
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
-    background-image: url("../images/background_desert.png");
 }
 
 .gameBoardCell {
@@ -57,10 +71,12 @@ img{
     float: left;
     border-style: solid;
     border-color: black;
+    border-width: 1px;
 }
 
-.gameBoardCell:hover{
+.gameBoardCell:hover {
     border-color: red;
+    border-width: 4px;
 }
 
 .gameBoardRow {
@@ -71,10 +87,12 @@ img{
 .highlight {
     border-style: solid;
     border-color: dodgerblue;
+    border-width: 3px;
 }
 
-.highlight:hover{
+.highlight:hover {
     border-color: blue;
+    border-width: 4px;
 }
 
 .zoom {
@@ -87,3 +105,136 @@ img{
 .zoom:hover {
     transform: scale(1.2);
 }
+
+
+/* HIDE RADIO */
+[type=radio] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+    cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+    outline: 2px solid #f00;
+}
+
+br {
+    display: block;
+    margin: 6px 0;
+}
+
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0); /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    -webkit-animation-name: fadeIn; /* Fade in the background */
+    -webkit-animation-duration: 0.4s;
+    animation-name: fadeIn;
+    animation-duration: 0.4s;
+    font-family: Agency FB;
+}
+
+/* Modal Content */
+.modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+
+    bottom: 0;
+    background-color: #fefefe;
+    width: 100%;
+    -webkit-animation-name: slideIn;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideIn;
+    animation-duration: 0.4s
+}
+
+/* The Close Button */
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #004085;
+}
+
+.modal-body {
+    padding: 2px 16px;
+    background-color: black;
+}
+
+.modal-footer {
+    padding: 2px 16px;
+    background-color: #004085;
+}
+
+/* Add Animation */
+@-webkit-keyframes slideIn {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+@keyframes slideIn {
+    from {
+        bottom: -300px;
+        opacity: 0
+    }
+    to {
+        bottom: 0;
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+    to {
+        opacity: 1
+    }
+}
+

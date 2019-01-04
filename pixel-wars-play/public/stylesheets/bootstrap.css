@@ -3875,6 +3875,10 @@ input[type="button"].btn-block {
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  background-color: #004085;
+  font-family: impact;
+  font-size: 25px;
+  letter-spacing: 2px;
 }
 
 .nav-link {
@@ -3883,6 +3887,7 @@ input[type="button"].btn-block {
 }
 
 .nav-link:hover, .nav-link:focus {
+  text-shadow: 3px 2px black;
   text-decoration: none;
 }
 

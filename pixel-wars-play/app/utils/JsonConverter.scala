@@ -54,8 +54,7 @@ object JsonConverter {
         "playerName" -> controller.activePlayerName,
         "hp" -> controller.activePlayerHealthPoints,
         "ap" -> controller.activePlayerActionPoints,
-        "actionIds" -> controller.actionIds(turnStartedEvent.playerNumber),
-        "actionImagePaths" -> controller.actionIds(turnStartedEvent.playerNumber).map(controller.actionIconPath(_).get),
+        "actions" -> actionsForPlayerToJson(turnStartedEvent.playerNumber)
       )
     }
   }
@@ -96,5 +95,26 @@ object JsonConverter {
       }
     }
     JsonConverter.gameObjects.writes(list.toList)
+  }
+
+  def playerStatusToJson() : JsValue = {
+      Json.obj(
+        "playerName" -> controller.activePlayerName,
+        "hp" -> controller.activePlayerHealthPoints,
+        "ap" -> controller.activePlayerActionPoints,
+      )
+  }
+
+  def actionsForPlayerToJson(playerId:Int) : JsValue = {
+    var actions = new JsArray()
+    controller.actionIds(playerId).foreach(actionId => actions = actions :+ Json.obj(
+      "id" -> actionId,
+      "damage" -> controller.actionDamage(actionId),
+      "description" -> controller.actionDescription(actionId),
+      "iconPath" -> controller.actionIconPath(actionId),
+      "range" -> controller.actionRange(actionId),
+      "cost" -> controller.actionPointCost(actionId),
+    ))
+    actions
   }
 }

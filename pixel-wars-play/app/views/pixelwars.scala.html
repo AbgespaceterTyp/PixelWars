@@ -1,21 +1,23 @@
 @(controller: de.htwg.se.msiwar.controller.Controller)
 
 @main("Pixel Wars")(controller) {
-    <script src="@routes.Assets.versioned("javascripts/jquery-3.3.1.js")"> </script>
-    <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"> </script>
-    <script src="@routes.Assets.versioned("javascripts/main.js")"> </script>
+    <script src="@routes.Assets.versioned("javascripts/jquery-3.3.1.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/bootstrap.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/main.js")"></script>
+    <script src="@routes.Assets.versioned("javascripts/vue.js")"></script>
+    <script src="https://unpkg.com/@@webcomponents/webcomponentsjs@@latest/webcomponents-loader.js"></script>
+    <script src="@routes.Assets.versioned("polymer/status-bar.js")" type="module"></script>
+    <script src="@routes.Assets.versioned("vue/action-bar.js")" type="module"></script>
     <link rel="stylesheet" media="screen" href="@routes.Assets.versioned("stylesheets/bootstrap.css")">
     <body>
-        <div id="statusbar">
-            <span id="activePlayer">Turn: @controller.activePlayerName</span>
-            <span id="activePlayerHealth">HP: @controller.activePlayerHealthPoints</span>
-            <span id="activePlayerAP">AP: @controller.activePlayerActionPoints</span>
-        </div>
+        <status-bar id="statusBar" player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
+        ap="@controller.activePlayerActionPoints" maxAp="@controller.activePlayerActionPoints">
+        </status-bar>
         <div id="gameBoard">
         @for(row <- 0 until controller.rowCount) {
             <div class="gameBoardRow">
             @for(col <- 0 until controller.columnCount) {
-                @defining(row + "_" + col){ cellId =>
+                @defining(row + "_" + col) { cellId =>
                     @if(controller.cellContentImagePath(row, col).isDefined) {
                         <img class="gameBoardCell" id="gameBoardCell_@cellId" src="@routes.Assets.versioned(controller.cellContentImagePath(row, col).get)"/>
                     } else {
@@ -26,10 +28,6 @@
             </div>
         }
         </div>
-        <div id="actionbar" class="switch-toggle switch-candy">
-        @for(actionId <- controller.actionIds(controller.activePlayerNumber)) {
-            <input class="action" id="action_@actionId" name="actions" type="radio" onclick=""><img src="@routes.Assets.versioned(controller.actionIconPath(actionId).get)"/></input>
-        }
-        </div>
+        <actionbar id="actionbar"/>
     </body>
 }

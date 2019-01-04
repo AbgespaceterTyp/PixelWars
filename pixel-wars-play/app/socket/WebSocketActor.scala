@@ -1,13 +1,13 @@
 package socket
 
-import akka.actor.{Actor, ActorRef, Props}
+import akka.actor.{ Actor, ActorRef, Props }
 import de.htwg.se.msiwar.aview.MainApp.controller
 import de.htwg.se.msiwar.controller._
 import utils.JsonConverter
 
 import scala.swing.Reactor
 
-class WebSocketActor(out: ActorRef) extends Actor with Reactor{
+class WebSocketActor(out: ActorRef) extends Actor with Reactor {
   listenTo(controller)
 
   override def receive: Receive = {
@@ -23,23 +23,23 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor{
     case _: GameStarted => sendJson()
   }
 
-  def sendJson() : Unit = {
+  def sendJson(): Unit = {
     out ! JsonConverter.gameBoardToJson().toString()
   }
 
-  def sendPlayerWon(playerWonEvent: PlayerWon) : Unit = {
+  def sendPlayerWon(playerWonEvent: PlayerWon): Unit = {
     out ! JsonConverter.playerWonToJson(playerWonEvent).toString()
   }
 
-  def sendTurnStarted(turnStarted: TurnStarted) : Unit = {
+  def sendTurnStarted(turnStarted: TurnStarted): Unit = {
     out ! JsonConverter.turnStartedToJson(turnStarted).toString()
   }
 
-  def sendAttackResult(attackResult: AttackResult) : Unit = {
+  def sendAttackResult(attackResult: AttackResult): Unit = {
     out ! JsonConverter.attackResultToJson(attackResult).toString()
   }
 }
 
-object WebSocketActor{
+object WebSocketActor {
   def props(out: ActorRef) = Props(new WebSocketActor(out))
 }

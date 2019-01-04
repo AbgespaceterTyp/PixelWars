@@ -1,6 +1,11 @@
-@(controller: de.htwg.se.msiwar.controller.Controller)
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
 
-@main("Pixel Wars")(controller) {
+@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main("Pixel Wars") {
     <body>
         <h1>Pixelwars</h1>
         <p>

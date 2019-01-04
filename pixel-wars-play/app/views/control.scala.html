@@ -1,5 +1,10 @@
-@(controller:de.htwg.se.msiwar.controller.Controller)
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
 
-@main("How to play")(controller) {
-  <img class="center" src="@routes.Assets.versioned("images/controls.png")">
+@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main("How to play") {
+  <img class="center" src="@assets.path("images/controls.png")">
 }

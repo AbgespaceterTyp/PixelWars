@@ -1,23 +1,28 @@
-@(controller: de.htwg.se.msiwar.controller.Controller)
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
 
-@main("Gameselection")(controller) {
+@(controller: de.htwg.se.msiwar.controller.Controller)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@scenarioImageName(scenarioId:Int) = @{"/assets/images/Scenario_" + scenarioId + ".png"}
+
+@main("Gameselection") {
     <body>
         <h1>Select your next adventure!</h1>
         <div class="card-deck">
         @for(scenarioId <- controller.scenarioIds.toSeq.sorted) {
             @if(controller.scenarioName(scenarioId).isDefined) {
-                @defining("/assets/images/Scenario_" + scenarioId + ".png") { scenarioImageName =>
-                    <div class="card">
-                        <div class="zoom">
-                            <a href="command/n@scenarioId">
-                                <img class="card-img-top" src="@scenarioImageName" alt="Card image cap">
-                                <div class="card-body">
-                                    <h5 class="card-title">@controller.scenarioName(scenarioId).get</h5>
-                                </div>
-                            </a>
-                        </div>
+                <div class="card">
+                    <div class="zoom">
+                        <a href="command/n@scenarioId">
+                            <img class="card-img-top" src="@scenarioImageName(scenarioId)" alt="Card image cap">
+                            <div class="card-body">
+                                <h5 class="card-title">@controller.scenarioName(scenarioId).get</h5>
+                            </div>
+                        </a>
                     </div>
-                }
+                </div>
             }
         }
         </div>

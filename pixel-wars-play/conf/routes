@@ -1,26 +1,48 @@
-GET     /                                                  controllers.WuiController.index
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
 
-GET     /about                                             controllers.WuiController.about
+# Home page
+GET     /                                                   controllers.ApplicationController.index
+GET     /signOut                                            controllers.ApplicationController.signOut
+GET     /authenticate/:provider                             controllers.SocialAuthController.authenticate(provider)
 
-GET     /control                                           controllers.WuiController.control
+GET     /signUp                                             controllers.SignUpController.view
+POST    /signUp                                             controllers.SignUpController.submit
 
-GET     /gameSelection                                     controllers.WuiController.gameSelection
+GET     /signIn                                             controllers.SignInController.view
+POST    /signIn                                             controllers.SignInController.submit
 
-GET     /command/:line                                     controllers.WuiController.command(line:String)
+GET     /password/forgot                                    controllers.ForgotPasswordController.view
+POST    /password/forgot                                    controllers.ForgotPasswordController.submit
+GET     /password/reset/:token                              controllers.ResetPasswordController.view(token: java.util.UUID)
+POST    /password/reset/:token                              controllers.ResetPasswordController.submit(token: java.util.UUID)
+GET     /password/change                                    controllers.ChangePasswordController.view
+POST    /password/change                                    controllers.ChangePasswordController.submit
 
-GET     /executeAction/:actionId/:rowIndex/:columnIndex    controllers.WuiController.executeAction(actionId:Int,rowIndex:Int,columnIndex:Int)
+GET     /account/email/:email                               controllers.ActivateAccountController.send(email: String)
+GET     /account/activate/:token                            controllers.ActivateAccountController.activate(token: java.util.UUID)
 
-GET     /canExecuteAction/:actionId/:rowIndex/:columnIndex controllers.WuiController.canExecuteAction(actionId:Int,rowIndex:Int,columnIndex:Int)
+GET     /about                                              controllers.WuiController.about
 
-GET     /backgroundImage                                   controllers.WuiController.backgroundImage
+GET     /control                                            controllers.WuiController.control
 
-GET     /cellsInRange/:actionId                            controllers.WuiController.cellsInRange(actionId:Int)
+GET     /gameSelection                                      controllers.WuiController.gameSelection
 
-GET     /gameBoard                                         controllers.WuiController.gameBoard
+GET     /command/:line                                      controllers.WuiController.command(line:String)
 
-GET     /websocket                                         controllers.WuiController.socket
+GET     /executeAction/:actionId/:rowIndex/:columnIndex     controllers.WuiController.executeAction(actionId:Int,rowIndex:Int,columnIndex:Int)
+GET     /canExecuteAction/:actionId/:rowIndex/:columnIndex  controllers.WuiController.canExecuteAction(actionId:Int,rowIndex:Int,columnIndex:Int)
+GET     /actions                                            controllers.WuiController.actions
 
-GET     /actions                                           controllers.WuiController.actions
+GET     /backgroundImage                                    controllers.WuiController.backgroundImage
+
+GET     /cellsInRange/:actionId                             controllers.WuiController.cellsInRange(actionId:Int)
+
+GET     /gameBoard                                          controllers.WuiController.gameBoard
+
+GET     /websocket                                          controllers.WuiController.socket
 
 # Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file                                      controllers.Assets.versioned(path="/public", file: Asset)
+GET     /assets/*file                                       controllers.Assets.versioned(path="/public", file: Asset)
+->      /webjars                                            webjars.Routes

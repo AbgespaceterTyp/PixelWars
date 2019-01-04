@@ -1,8 +1,13 @@
-@(controller:de.htwg.se.msiwar.controller.Controller)
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
 
-@main("Welcome to Pixelwars")(controller) {
+@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main("Welcome to Pixelwars") {
  <body>
   <h1>Welcome to PixelWars!</h1>
-    <img class="center" src="@routes.Assets.versioned("images/background_opening.png")">
+    <img class="center" src="@assets.path("images/background_opening.png")">
  </body>
 }

@@ -3,11 +3,11 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-@(controller: de.htwg.se.msiwar.controller.Controller)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(controller: de.htwg.se.msiwar.controller.Controller, user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @scenarioImageName(scenarioId:Int) = @{"/assets/images/Scenario_" + scenarioId + ".png"}
 
-@main("Gameselection") {
+@main("Gameselection", Some(user)) {
     <body>
         <h1>Select your next adventure!</h1>
         <div class="card-deck">

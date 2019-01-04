@@ -3,11 +3,11 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-@(controller: de.htwg.se.msiwar.controller.Controller)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(controller: de.htwg.se.msiwar.controller.Controller, user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @cellId(row:Int, col:Int)=@{"gameBoardCell_" + row + "_" + col}
 
-@main("Pixel Wars") {
+@main("Pixel Wars", Some(user)) {
     <script src="@assets.path("javascripts/jquery-3.3.1.js")"></script>
     <script src="@assets.path("javascripts/bootstrap.js")"></script>
     <script src="@assets.path("javascripts/main.js")"></script>

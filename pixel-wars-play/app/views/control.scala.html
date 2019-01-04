@@ -3,8 +3,8 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@main("How to play") {
+@main("How to play", Some(user)) {
   <img class="center" src="@assets.path("images/controls.png")">
 }

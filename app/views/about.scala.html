@@ -1,0 +1,21 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@main("Pixel Wars", Some(user)) {
+    <body>
+        <h1>Pixelwars</h1>
+        <p>
+            Pixelwars (PixelTankWars) wurde ursprünglich für die Vorlesung "Moderne Programmiersprachen"
+            <br> von Lukas Groß und Jan-David Schindler entwickelt.
+            <br><br>
+            Nun hat das Spiel ein neues Level erreicht
+                und wird für das Studienfach Webtechnologie mit verschiedenen Technologien aufgebaut.
+            <br>Die dafür zuständigen Personen sind
+            <br>(Creator) Lukas Groß und Samantha Isted
+        </p>
+    </body>
+}

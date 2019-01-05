@@ -50,6 +50,23 @@ server.pid
 /dist/
 .cache
 
+dist
+/.idea
+/*.iml
+/out
+/.idea_modules
+/.classpath
+/.project
+/RUNNING_PID
+/.settings
+/bin
+logs
+project/project
+project/target
+target
+tmp
+.g8
+
 ### SBT ###
 # Simple Build Tool
 # http://www.scala-sbt.org/release/docs/Getting-Started/Directories.html#configuring-version-control

@@ -1,0 +1,38 @@
+@import play.api.i18n.Messages
+@import play.api.mvc.RequestHeader
+@import org.webjars.play.WebJarsUtil
+@import controllers.AssetsFinder
+
+@(controller: de.htwg.se.msiwar.controller.Controller, user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+
+@cellId(row:Int, col:Int)=@{"gameBoardCell_" + row + "_" + col}
+
+@main("Pixel Wars", Some(user)) {
+    <script src="@assets.path("javascripts/jquery-3.3.1.js")"></script>
+    <script src="@assets.path("javascripts/bootstrap.js")"></script>
+    <script src="@assets.path("javascripts/main.js")"></script>
+    <script src="@assets.path("javascripts/vue.js")"></script>
+    <script src="https://unpkg.com/@@webcomponents/webcomponentsjs@@latest/webcomponents-loader.js"></script>
+    <script src="@assets.path("polymer/status-bar.js")" type="module"></script>
+    <script src="@assets.path("vue/action-bar.js")" type="module"></script>
+    <link rel="stylesheet" media="screen" href="@assets.path("stylesheets/bootstrap.css")">
+    <body>
+        <status-bar id="statusBar" player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
+        ap="@controller.activePlayerActionPoints" maxAp="@controller.activePlayerActionPoints">
+        </status-bar>
+        <div id="gameBoard">
+        @for(row <- 0 until controller.rowCount) {
+            <div class="gameBoardRow">
+            @for(col <- 0 until controller.columnCount) {
+                @if(controller.cellContentImagePath(row, col).isDefined) {
+                    <img class="gameBoardCell" id="@cellId(row,col)" src="@assets.path(controller.cellContentImagePath(row, col).get)"/>
+                } else {
+                    <img class="gameBoardCell" id="@cellId(row,col)" src="@assets.path("images/placeholder.png")"/>
+                }
+            }
+            </div>
+        }
+        </div>
+        <actionbar id="actionbar"/>
+    </body>
+}

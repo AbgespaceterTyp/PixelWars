@@ -9,7 +9,9 @@
 
 @main("Gameselection", Some(user)) {
     <body>
-        <h1>Select your next adventure!</h1>
+        <h1 class="wiggle">
+           Select your mission!
+        </h1>
         <div class="card-deck">
         @for(scenarioId <- controller.scenarioIds.toSeq.sorted) {
             @if(controller.scenarioName(scenarioId).isDefined) {

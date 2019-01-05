@@ -16,7 +16,8 @@
         <title>@title</title>
         <link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
         <link href="//cdnjs.cloudflare.com/ajax/libs/ionicons/1.5.2/css/ionicons.min.css" rel="stylesheet">
-        @webJarsUtil.locate("bootstrap.min.css").css()
+
+        @webJarsUtil.locate("bootstrap.css").css()
         @webJarsUtil.locate("bootstrap-theme.min.css").css()
         <link rel="stylesheet" href="@assets.path("styles/main.css")">
         <link rel="stylesheet" media="screen" href="@assets.path("stylesheets/main.css")">
@@ -27,39 +28,22 @@
             <![endif]-->
     </head>
     <body>
-        <header class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">@messages("toggle.navigation")</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="@controllers.routes.ApplicationController.index">Silhouette Seed Template</a>
-                </div>
-                <nav class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="@controllers.routes.ApplicationController.index">@messages("home")</a></li>
-                        <li><a href="/gameSelection">Level</a></li>
-                        <li><a href="/about">About</a></li>
-                        <li><a href="/control">Control</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                    @user.map { u =>
-                    <li><a href="@controllers.routes.ApplicationController.index">@u.name</a></li>
-                    @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
-                        <li><a href="@controllers.routes.ChangePasswordController.view">@messages("change.password")</a></li>
-                    }
-                    <li><a href="@controllers.routes.ApplicationController.signOut">@messages("sign.out")</a></li>
-                    }.getOrElse {
-                        <li><a href="@controllers.routes.SignInController.view">@messages("sign.in")</a></li>
-                        <li><a href="@controllers.routes.SignUpController.view">@messages("sign.up")</a></li>
-                    }
-                    </ul>
-                </nav>
-            </div>
-        </header>
+        <nav class="nav">
+            <a class="nav-link active" href="/"><img src="@assets.path("images/app_icon.png")"></a>
+            <a class="nav-link" href="/gameSelection"><br>Let's play!</a>
+            <a class="nav-link" href="/about"><br>About</a>
+            <a class="nav-link" href="/control"><br>How to Play</a>
+            @user.map { u =>
+            <a class="nav-link" href="@controllers.routes.ApplicationController.index"><br>@u.name</a>
+            @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
+                <a class="nav-link" href="@controllers.routes.ChangePasswordController.view"><br>@messages("change.password")</a>
+            }
+            <a class="nav-link" href="@controllers.routes.ApplicationController.signOut"><br>@messages("sign.out")</a>
+            }.getOrElse {
+                <a class="nav-link" href="@controllers.routes.SignInController.view"><br><span class="glyphicon glyphicon-user"></span>Login</a>
+                <a class="nav-link" href="@controllers.routes.SignUpController.view"><br><span class="glyphicon glyphicon-log-in"></span>Register</a>
+            }
+        </nav>
         <main class="container">
             <div class="starter-template row">
                 @request.flash.get("error").map { msg =>

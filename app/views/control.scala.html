@@ -5,6 +5,6 @@
 
 @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@main("How to play", Some(user)) {
+@main("Control", Some(user)) {
   <img class="center" src="@assets.path("images/controls.png")">
 }

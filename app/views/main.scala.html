@@ -27,21 +27,38 @@
             <![endif]-->
     </head>
     <body>
-        <nav class="nav">
-            <a class="nav-link active" href="/"><img src="@assets.path("images/app_icon.png")"></a>
-            <a class="nav-link" href="/gameSelection"><br>Let's play!</a>
-            <a class="nav-link" href="/about"><br>About</a>
-            <a class="nav-link" href="/control"><br>How to Play</a>
-            @user.map { u =>
-            <a class="nav-link" href="@controllers.routes.ApplicationController.index"><br>@u.name</a>
-            @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
-                <a class="nav-link" href="@controllers.routes.ChangePasswordController.view"><br>@messages("change.password")</a>
-            }
-            <a class="nav-link" href="@controllers.routes.ApplicationController.signOut"><br>@messages("sign.out")</a>
-            }.getOrElse {
-                <a class="nav-link" href="@controllers.routes.SignInController.view"><br><span class="glyphicon glyphicon-user"></span>Login</a>
-                <a class="nav-link" href="@controllers.routes.SignUpController.view"><br><span class="glyphicon glyphicon-log-in"></span>Register</a>
-            }
+        <nav class="navbar navbar-expand-lg navbar-blue bg-blue">
+            <a class="navbar-brand active" href="/"><img src="@assets.path("images/app_icon.png")"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/gameSelection">Let's play!</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/control">How to play</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-sm-2 mt-2 mt-lg-0">
+                @user.map { u =>
+                <li class="nav-item"> <a class="nav-link" href="@controllers.routes.ApplicationController.index">@u.name</a></li>
+                @if(u.loginInfo.providerID == com.mohiva.play.silhouette.impl.providers.CredentialsProvider.ID) {
+                    <li class="nav-item"> <a class="nav-link" href="@controllers.routes.ChangePasswordController.view">@messages("change.password")</a></li>
+                }
+                <li class="nav-item"> <a class="nav-link" href="@controllers.routes.ApplicationController.signOut">@messages("sign.out")</a></li>
+                }.getOrElse {
+                    <li class="nav-item"><a class="nav-link" href="@controllers.routes.SignInController.view"><span class="glyphicon glyphicon-user"></span>
+                        Login</a></li>
+                    <li class="nav-item"><a class="nav-link" href="@controllers.routes.SignUpController.view"><span class="glyphicon glyphicon-log-in"></span>
+                        Register</a></li>
+                }
+                </ul>
+            </div>
         </nav>
         <main class="container">
             <div class="starter-template row">

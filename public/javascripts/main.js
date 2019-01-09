@@ -1,4 +1,4 @@
-let websocket = new WebSocket("ws://pixel-wars.herokuapp.com:9000/websocket");
+let websocket = new WebSocket("wss://pixel-wars.herokuapp.com:9000/websocket");
 let activeActionId = -1;
 let modal;
 let span;

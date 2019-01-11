@@ -349,3 +349,9 @@ button.bg-blue:focus {
     background-color: #004085 !important;
 }
 
+footer {
+    margin-top: 2%;
+    background-color: #004085;
+    text-align:center;
+}
+

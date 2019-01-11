@@ -5,11 +5,13 @@ let span;
 
 function updateStatusBar(playerName, hp, ap) {
     let statusBar = document.getElementById("statusBar");
-    statusBar.player = playerName;
-    statusBar.hp = hp;
-    statusBar.maxHp = hp;
-    statusBar.ap = ap;
-    statusBar.maxAp = ap;
+    if(typeof statusBar !== 'undefined') {
+        statusBar.player = playerName;
+        statusBar.hp = hp;
+        statusBar.maxHp = hp;
+        statusBar.ap = ap;
+        statusBar.maxAp = ap;
+    }
 }
 
 function showWinner(winner) {

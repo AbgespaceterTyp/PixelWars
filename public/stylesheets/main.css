@@ -9,6 +9,10 @@ body {
     color: white;
 }
 
+label,input,legend,button{
+    font-family: impact;
+}
+
 h1 {
     padding: 15px;
     text-align: center;
@@ -19,7 +23,7 @@ h1 {
 
 p {
     background-color: transparent;
-    font-family: Agency FB;
+    font-family: impact;
     font-size: 20px;
     text-align: center;
 }

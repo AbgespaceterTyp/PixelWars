@@ -13,10 +13,10 @@ change.password.title = Change Password
 activate.account.title = Activate Account
 
 toggle.navigation = Toggle navigation
-welcome.signed.in = Welcome, you are now signed in!
+welcome.signed.in = User info
 
 sign.up.account = Sign up for a new account
-sign.in.credentials = Sign in with your credentials
+sign.in.credentials = Sign in
 
 error = Error!
 info = Info!

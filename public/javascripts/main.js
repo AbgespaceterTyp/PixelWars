@@ -239,12 +239,3 @@ function showHit(row,col) {
     let cellToUpdate = document.getElementById("gameBoardCell_" + row + "_" + col);
     cellToUpdate.classList.add("hit");
 }
-
-
-
-
-
-
-
-
-

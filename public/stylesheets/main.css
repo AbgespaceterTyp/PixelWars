@@ -7,6 +7,7 @@
 body {
     background-color: #000000;
     color: white;
+    letter-spacing: 2px;
 }
 
 label,input,legend,button{

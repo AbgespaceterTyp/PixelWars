@@ -6,5 +6,28 @@
 @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main("Control", Some(user)) {
-  <img class="center" src="@assets.path("images/controls.png")">
+  <div class="col-md-12">
+    <div class="row">
+      <p class="col-md-12"></p>
+    </div>
+    <div class="row">
+      <p class="col-md-12"></p>
+    </div>
+    <div class="row">
+      <p class="col-md-6"><img class="center" src="@assets.path("images/help/actionbar.png")"></p>
+      <p class="col-md-6">Die Aktionsbar</p>
+    </div>
+    <div class="row">
+      <p class="col-md-6">Die Statusbar</p>
+      <p class="col-md-6"><img class="center" src="@assets.path("images/help/statusbar.png")"></p>
+    </div>
+    <div class="row">
+      <p class="col-md-6"><img class="center" src="@assets.path("images/help/valid_fields.png")"></p>
+      <p class="col-md-6">Gültige Feldauswahl</p>
+    </div>
+    <div class="row">
+      <p class="col-md-6">Ungültiger Spielzug</p>
+      <p class="col-md-6"><img class="center" src="@assets.path("images/help/invalid_fields.png")"></p>
+    </div>
+  </div>
 }

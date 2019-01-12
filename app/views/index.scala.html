@@ -3,9 +3,9 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@main("Pixelwars") {
+@main("Pixelwars", Some(user)) {
  <body>
   <h1>Welcome to PixelWars!</h1>
     <img class="center" src="@assets.path("images/background_opening.png")">

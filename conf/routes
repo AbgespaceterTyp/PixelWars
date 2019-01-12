@@ -3,9 +3,10 @@
 # ~~~~
 
 # Home page
-GET     /                                                   controllers.ApplicationController.index
 GET     /signOut                                            controllers.ApplicationController.signOut
 GET     /authenticate/:provider                             controllers.SocialAuthController.authenticate(provider)
+
+GET     /user                                               controllers.ApplicationController.user
 
 GET     /signUp                                             controllers.SignUpController.view
 POST    /signUp                                             controllers.SignUpController.submit
@@ -22,6 +23,8 @@ POST    /password/change                                    controllers.ChangePa
 
 GET     /account/email/:email                               controllers.ActivateAccountController.send(email: String)
 GET     /account/activate/:token                            controllers.ActivateAccountController.activate(token: java.util.UUID)
+
+GET     /                                                   controllers.WuiController.index
 
 GET     /about                                              controllers.WuiController.about
 

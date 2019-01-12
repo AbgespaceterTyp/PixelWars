@@ -19,8 +19,8 @@ import scala.concurrent.Future
 @Singleton
 class WuiController @Inject() (implicit webJarsUtil: WebJarsUtil, system: ActorSystem, assets: AssetsFinder, materializer: Materializer, cc: ControllerComponents, silhouette: Silhouette[DefaultEnv]) extends AbstractController(cc) with I18nSupport {
 
-  def index() = silhouette.UnsecuredAction { implicit request: Request[AnyContent] =>
-    Ok(views.html.index())
+  def index = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
+    Future.successful(Ok(views.html.index(request.identity)))
   }
 
   def about() = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>

@@ -44,7 +44,7 @@
                 </ul>
                 <ul class="navbar-nav mr-sm-2 mt-2 mt-lg-0">
                 @user.map { u =>
-                <li class="nav-item"> <a class="nav-link" href="@controllers.routes.ApplicationController.index">@u.name</a></li>
+                <li class="nav-item"> <a class="nav-link" href="@controllers.routes.ApplicationController.user">@u.name</a></li>
                 <li class="nav-item"> <a class="nav-link" href="@controllers.routes.ApplicationController.signOut">@messages("sign.out")</a></li>
                 }.getOrElse {
                     <li class="nav-item"><a class="nav-link" href="@controllers.routes.SignInController.view"><span class="glyphicon glyphicon-user"></span>

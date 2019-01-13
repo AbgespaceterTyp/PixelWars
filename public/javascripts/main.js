@@ -1,12 +1,13 @@
-let websocketUrl = "wss://pixel-wars.herokuapp.com/websocket";
+let websocketUrl = "ws://localhost:9000/websocket";
 let websocket = new WebSocket(websocketUrl);
 let activeActionId = -1;
 let modal;
 let span;
+let gameWon = false;
 
 function updateStatusBar(playerName, hp, ap) {
     let statusBar = document.getElementById("statusBar");
-    if(typeof statusBar !== 'undefined') {
+    if(statusBar) {
         statusBar.player = playerName;
         statusBar.hp = hp;
         statusBar.maxHp = hp;
@@ -38,6 +39,8 @@ function showWinner(winner) {
     gameBoard.style.marginRight = "auto";
 
     gameBoard.style.backgroundImage = "url(/assets/" + winner.wonImagePath + ")";
+
+    gameWon = true;
 }
 
 function updateGameBoardContent(json) {
@@ -115,6 +118,10 @@ function updateHighlighting() {
 
         success: function (result) {
             console.log("Received cells to updateHighlighting");
+            if(gameWon){
+                console.log('Received message but game already won, Message will be ignored');
+                return;
+            }
 
             let gameBoard = document.getElementById("gameBoard");
             let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
@@ -200,6 +207,11 @@ function setupWebsocket() {
     };
 
     websocket.onmessage = function (message) {
+        if(gameWon){
+            console.log('Received message but game already won, Message will be ignored');
+            return;
+        }
+
         let data = JSON.parse(message.data);
         if (data.eventType == null) {
             console.log('default message received -> update game board');

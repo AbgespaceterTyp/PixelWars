@@ -1,4 +1,5 @@
-let websocket = new WebSocket("wss://pixel-wars.herokuapp.com/websocket");
+let websocketUrl = "wss://pixel-wars.herokuapp.com/websocket";
+let websocket = new WebSocket(websocketUrl);
 let activeActionId = -1;
 let modal;
 let span;
@@ -185,7 +186,7 @@ function executeAction(rowIndex, colIndex) {
     });
 }
 
-function registerWebSocketListeners() {
+function setupWebsocket() {
     websocket.onopen = function () {
         console.log("Connected to Websocket");
     };
@@ -212,9 +213,18 @@ function registerWebSocketListeners() {
         } else if (data.eventType.startsWith("AttackResult")) {
             console.log('attack result message received -> show result');
             showHit(data.rowIdx, data.columnIdx);
-            // TODO show result on screen
         }
     };
+}
+
+function showHit(row,col) {
+    let cellToUpdate = document.getElementById("gameBoardCell_" + row + "_" + col);
+    cellToUpdate.classList.add("hit");
+}
+
+function aliveMessage() {
+    console.log('sending alive message');
+    websocket.send("alive");
 }
 
 $(document).ready(function () {
@@ -222,7 +232,7 @@ $(document).ready(function () {
     updateGameBoardBackgroundImage();
 
     registerCellListeners();
-    registerWebSocketListeners();
+    setupWebsocket();
 
     modal = document.getElementById('myModal');
     span = document.getElementsByClassName("close")[0];
@@ -235,9 +245,7 @@ $(document).ready(function () {
             modal.style.display = "none";
         }
     };
-});
 
-function showHit(row,col) {
-    let cellToUpdate = document.getElementById("gameBoardCell_" + row + "_" + col);
-    cellToUpdate.classList.add("hit");
-}
+    // Send alive message to avoid socket being closed on user inactivity
+    setInterval(aliveMessage, 30 * 1000);
+});

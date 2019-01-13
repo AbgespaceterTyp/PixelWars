@@ -12,7 +12,7 @@ class WebSocketActor(out: ActorRef) extends Actor with Reactor {
 
   override def receive: Receive = {
     // at the moment msg is ignored and we sent always game board as json
-    case _: String => out ! sendJson()
+    case _: String => sendJson()
   }
 
   reactions += {

@@ -1,4 +1,4 @@
-let websocketUrl = "ws://localhost:9000/websocket";
+let websocketUrl = "wss://pixel-wars.herokuapp.com/websocket";
 let websocket = new WebSocket(websocketUrl);
 let activeActionId = -1;
 let modal;

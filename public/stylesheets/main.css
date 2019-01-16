@@ -1,5 +1,3 @@
-@import url("bootstrap.css");
-
 :root {
     background-color: #000 !important;
 }
@@ -70,25 +68,6 @@ img {
     margin-right: 5%;
 }
 
-.hit{
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes shake {
-    0% { transform: translate(1px, 1px) rotate(0deg); }
-    10% { transform: translate(-1px, -2px) rotate(-1deg); }
-    20% { transform: translate(-3px, 0px) rotate(1deg); }
-    30% { transform: translate(3px, 2px) rotate(0deg); }
-    40% { transform: translate(1px, -1px) rotate(1deg); }
-    50% { transform: translate(-1px, 2px) rotate(-1deg); }
-    60% { transform: translate(-3px, 1px) rotate(0deg); }
-    70% { transform: translate(3px, 1px) rotate(-1deg); }
-    80% { transform: translate(-1px, -1px) rotate(1deg); }
-    90% { transform: translate(1px, 2px) rotate(0deg); }
-    100% { transform: translate(1px, -2px) rotate(-1deg); }
-}
-
 .gameBoardCell {
     width: 60px;
     height: 60px;
@@ -120,7 +99,7 @@ img {
 }
 
 .zoom {
-    padding: 50px;
+    padding: 2%;
     background-color: transparent;
     transition: transform .2s;
     margin: 0 auto;
@@ -150,6 +129,7 @@ br {
     margin: 6px 0;
 }
 
+/*Spielerwechsel fenster*/
 .modal {
     display: none;
     position: fixed;
@@ -161,11 +141,16 @@ br {
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
-    -webkit-animation-name: fadeIn;
-    -webkit-animation-duration: 0.4s;
-    animation-name: fadeIn;
-    animation-duration: 0.4s;
+    /*-webkit-animation-name: fadeIn;*/
+    /*-webkit-animation-duration: 0.4s;*/
+    /*animation-name: fadeIn;*/
+    /*animation-duration: 0.4s;*/
     font-family: Agency FB;
+
+
+    /*background: red;*/
+    -webkit-animation: fadeinout 4s linear forwards;
+    animation: fadeinout 4s linear forwards;
 }
 
 .modal-content {
@@ -179,7 +164,7 @@ br {
     -webkit-animation-name: slideIn;
     -webkit-animation-duration: 0.4s;
     animation-name: slideIn;
-    animation-duration: 0.4s
+    animation-duration: 0.4s;
 }
 
 .close {
@@ -187,6 +172,10 @@ br {
     float: right;
     font-size: 28px;
     font-weight: bold;
+    -webkit-animation-name: slideOut;
+    -webkit-animation-duration: 0.4s;
+    animation-name: slideOut;
+    animation-duration: 0.4s
 }
 
 .close:hover,
@@ -211,7 +200,7 @@ br {
     background-color: #004085;
 }
 
-/* Add Animation */
+/* Spielerwechsel Animation */
 @-webkit-keyframes slideIn {
     from {
         bottom: -300px;
@@ -222,7 +211,6 @@ br {
         opacity: 1
     }
 }
-
 @keyframes slideIn {
     from {
         bottom: -300px;
@@ -233,7 +221,6 @@ br {
         opacity: 1
     }
 }
-
 @-webkit-keyframes fadeIn {
     from {
         opacity: 0
@@ -242,7 +229,6 @@ br {
         opacity: 1
     }
 }
-
 @keyframes fadeIn {
     from {
         opacity: 0
@@ -251,7 +237,84 @@ br {
         opacity: 1
     }
 }
+@-webkit-keyframes slideOut {
+    from {
+        bottom: 0;
+        opacity: 1
+    }
+    to {
+        bottom: -300px;
+        opacity: 0
+    }
+}
+@keyframes slideOut {
+    from {
+        bottom: 0;
+        opacity: 1
+    }
+    to {
+        bottom: -300px;
+        opacity: 0
+    }
+}
+@-webkit-keyframes fadeOut {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
+@keyframes fadeOut {
+    from {
+        opacity: 1
+    }
+    to {
+        opacity: 0
+    }
+}
 
+.elementToFadeInAndOut {
+
+}
+
+@-webkit-keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+@keyframes fadeinout {
+    0%,100% { opacity: 0; }
+    50% { opacity: 1; }
+}
+
+
+/*Hit Animation*/
+@keyframes hit {
+    0% {background-image: url("../images/hit.png")}
+}
+.hit{
+    animation: hit 0.5s;
+}
+.hit{
+    animation: shake 0.5s;
+    animation-iteration-count: infinite;
+}
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/*wackelüberschrift*/
 @keyframes wiggle {
     0% { transform: rotate(0deg); }
     80% { transform: rotate(0deg); }
@@ -259,9 +322,7 @@ br {
     95% { transform: rotate(-5deg); }
     100% { transform: rotate(0deg); }
 }
-
 h1.wiggle {
-    display: inline-block;
     animation: wiggle 2.5s infinite;
     padding: 15px;
     text-align: center;
@@ -269,24 +330,8 @@ h1.wiggle {
     font-size: 50px;
     background-color: transparent;
 }
-
 h1.wiggle:hover {
     animation: none;
-}
-
-
-
-
-
-
-
-@keyframes hit {
-    0% {background-image: url("../images/hit.png")}
-}
-
-
-.hit{
-    animation: hit 0.5s;
 }
 
 /*navbar*/
@@ -297,8 +342,7 @@ h1.wiggle:hover {
 }
 
 .navbar-blue .navbar-brand {
-    color: #fff;
-    background-color: #004085;
+    background-color: transparent;
 }
 .navbar-blue .navbar-brand:hover, .navbar-blue .navbar-brand:focus {
     color: #fff;
@@ -323,15 +367,9 @@ h1.wiggle:hover {
     color: #fff;
 }
 
-.navbar-blue .navbar-toggler {
-    color: rgba(0,64,133, 0.8);
-    background-image: url("../images/menu_icon.png");
-    border-color: rgba(255,255,255, 1);
-}
-
-.navbar-blue .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
-}
+/*.navbar-blue .navbar-toggler {*/
+    /*color: rgba(0,64,133, 0.8);*/
+/*}*/
 
 .navbar-dark .navbar-text {
     color: rgba(0,64,133, 0.8);

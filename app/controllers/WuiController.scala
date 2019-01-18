@@ -23,16 +23,16 @@ class WuiController @Inject() (implicit webJarsUtil: WebJarsUtil, system: ActorS
     Future.successful(Ok(views.html.index(request.identity)))
   }
 
-  def about() = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Ok(views.html.about(request.identity)))
+  def about() = silhouette.UnsecuredAction { implicit request =>
+    Ok(views.html.about())
   }
 
   def gameSelection() = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
     Future.successful(Ok(views.html.gameSelection(controller, request.identity)))
   }
 
-  def control() = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>
-    Future.successful(Ok(views.html.control(request.identity)))
+  def control() = silhouette.UnsecuredAction { implicit request =>
+    Ok(views.html.control())
   }
 
   def command(line: String) = silhouette.SecuredAction.async { implicit request: SecuredRequest[DefaultEnv, AnyContent] =>

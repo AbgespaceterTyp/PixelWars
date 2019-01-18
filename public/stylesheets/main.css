@@ -294,11 +294,7 @@ br {
     0% {background-image: url("../images/hit.png")}
 }
 .hit{
-    animation: hit 0.5s;
-}
-.hit{
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
+    animation: shake 0.5s, hit 0.5s;
 }
 @keyframes shake {
     0% { transform: translate(1px, 1px) rotate(0deg); }

@@ -66,25 +66,28 @@ img {
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
+    display: block;
 }
 
 .gameBoardCell {
-    width: 60px;
-    height: 60px;
-    float: left;
+    flex: 10%;
     border-style: solid;
     border-color: black;
     border-width: 1px;
 }
 
-.gameBoardCell:hover {
+.gameBoardCellImage {
+    width: 100%;
+}
+
+.gameBoardCellImage:hover {
     border-color: red;
-    border-width: 4px;
+    border-width: 3px;
 }
 
 .gameBoardRow {
-    height: 60px;
-    padding: 0px;
+    display: flex;
+    flex-flow: row nowrap;
 }
 
 .highlight {

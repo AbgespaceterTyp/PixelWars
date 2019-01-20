@@ -45,7 +45,7 @@ function showWinner(winner) {
 
 function updateGameBoardContent(json) {
     let gameBoard = document.getElementById("gameBoard");
-    let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
+    let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCellImage");
     // clear previous content
     for (let i = 0; i < gameBoardCell.length; i++) {
         let cell = gameBoardCell.item(i);
@@ -55,34 +55,10 @@ function updateGameBoardContent(json) {
     // find and update cells
     for (let j = 0; j < json.length; j++) {
         let gameObj = json[j];
-        let cellToUpdate = document.getElementById("gameBoardCell_" + gameObj.rowIdx + "_" + gameObj.columnIdx);
+        let cellToUpdate = document.getElementById("gameBoardCellImage_" + gameObj.rowIdx + "_" + gameObj.columnIdx);
         console.log("cell src=" + cellToUpdate.src);
         cellToUpdate.src = "/assets/" + gameObj.imagePath;
     }
-}
-
-function updateGameBoardScale() {
-    let gameBoard = document.getElementById("gameBoard");
-
-    let gameBoardRow = gameBoard.getElementsByClassName("gameBoardRow");
-    let rowCount = 0;
-    let colCount = 0;
-    if (gameBoardRow != null) {
-        rowCount = gameBoardRow.length;
-        if (rowCount > 0) {
-            colCount = gameBoardRow.item(0).getElementsByClassName("gameBoardCell").length
-        }
-    }
-
-    gameBoard.style.height = 60 * rowCount + "px";
-    gameBoard.style.minHeight = 60 * rowCount + "px";
-
-    gameBoard.style.width = 60 * colCount + "px";
-    gameBoard.style.minWidth = 60 * colCount + "px";
-
-    gameBoard.style.display = "block";
-    gameBoard.style.marginLeft = "auto";
-    gameBoard.style.marginRight = "auto";
 }
 
 function updateGameBoardBackgroundImage() {
@@ -123,8 +99,7 @@ function updateHighlighting() {
                 return;
             }
 
-            let gameBoard = document.getElementById("gameBoard");
-            let gameBoardCell = gameBoard.getElementsByClassName("gameBoardCell");
+            let gameBoardCell = document.getElementsByClassName("gameBoardCellImage");
             // clear previous highlight
             for (let i = 0; i < gameBoardCell.length; i++) {
                 let cell = gameBoardCell.item(i);
@@ -133,7 +108,7 @@ function updateHighlighting() {
 
             for (let j = 0; j < result.length; j++) {
                 let tuple = result[j];
-                let cellToHighlight = document.getElementById("gameBoardCell_" + tuple.rowIdx + "_" + tuple.columnIdx);
+                let cellToHighlight = document.getElementById("gameBoardCellImage_" + tuple.rowIdx + "_" + tuple.columnIdx);
                 cellToHighlight.classList.add("highlight");
             }
         },
@@ -144,7 +119,7 @@ function updateHighlighting() {
 }
 
 function registerCellListeners() {
-    $(".gameBoardCell").click(function () {
+    $(".gameBoardCellImage").click(function () {
         let targetRow = this.id.substring(this.id.indexOf("_") + 1, this.id.lastIndexOf("_"));
         let targetCol = this.id.substring(this.id.lastIndexOf("_") + 1, this.id.length);
         console.log("Clicked cell at row=" + targetRow + ", col=" + targetCol);
@@ -230,7 +205,7 @@ function setupWebsocket() {
 }
 
 function showHit(row,col) {
-    let cellToUpdate = document.getElementById("gameBoardCell_" + row + "_" + col);
+    let cellToUpdate = document.getElementById("gameBoardCellImage_" + row + "_" + col);
     cellToUpdate.classList.add("hit");
 }
 
@@ -240,7 +215,6 @@ function aliveMessage() {
 }
 
 $(document).ready(function () {
-    updateGameBoardScale();
     updateGameBoardBackgroundImage();
 
     registerCellListeners();

@@ -5,7 +5,7 @@
 
 @(controller: de.htwg.se.msiwar.controller.Controller, user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@cellId(row:Int, col:Int)=@{"gameBoardCell_" + row + "_" + col}
+@cellId(row:Int, col:Int)=@{"gameBoardCellImage_" + row + "_" + col}
 
 @main("Pixel Wars", Some(user)) {
     <script src="@assets.path("javascripts/jquery-3.3.1.js")"></script>
@@ -24,11 +24,13 @@
         @for(row <- 0 until controller.rowCount) {
             <div class="gameBoardRow">
             @for(col <- 0 until controller.columnCount) {
+                <div class="gameBoardCell">
                 @if(controller.cellContentImagePath(row, col).isDefined) {
-                    <img class="gameBoardCell" id="@cellId(row,col)" src="@assets.path(controller.cellContentImagePath(row, col).get)"/>
+                    <img class="gameBoardCellImage" id="@cellId(row,col)" src="@assets.path(controller.cellContentImagePath(row, col).get)"/>
                 } else {
-                    <img class="gameBoardCell" id="@cellId(row,col)" src="@assets.path("images/placeholder.png")"/>
+                    <img class="gameBoardCellImage" id="@cellId(row,col)" src="@assets.path("images/placeholder.png")"/>
                 }
+                </div>
             }
             </div>
         }

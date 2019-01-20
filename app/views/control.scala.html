@@ -3,9 +3,9 @@
 @import org.webjars.play.WebJarsUtil
 @import controllers.AssetsFinder
 
-@()(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
+@(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
-@main("Control") {
+@main("Control", Some(user)) {
   <div class="col-md-12">
     <div class="row">
       <p class="col-md-12"></p>

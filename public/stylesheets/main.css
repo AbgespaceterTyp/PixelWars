@@ -363,6 +363,10 @@ h1.wiggle:hover {
 
 .navbar-blue .navbar-toggler {
     color: rgba(0,64,133, 0.8);
+    background-image: url("../images/menu_icon.png");
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
 }
 
 .navbar-dark .navbar-text {

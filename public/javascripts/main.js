@@ -20,26 +20,12 @@ function showWinner(winner) {
     console.log("Player " + winner.playerNumber + " wins!");
 
     let gameBoard = document.getElementById("gameBoard");
-    while (gameBoard.firstChild) {
-        gameBoard.removeChild(gameBoard.firstChild);
-    }
-    let statusBar = document.getElementById("statusBar");
-    statusBar.parentNode.removeChild(statusBar);
-
-    let actionbar = document.getElementById("actionbar");
-    actionbar.parentNode.removeChild(actionbar);
-
-    gameBoard.style.height = 600 + "px";
-    gameBoard.style.minHeight = 600 + "px";
-    gameBoard.style.width = 600 + "px";
-    gameBoard.style.minWidth = 600 + "px";
-
-    gameBoard.style.display = "block";
-    gameBoard.style.marginLeft = "auto";
-    gameBoard.style.marginRight = "auto";
-
     gameBoard.style.backgroundImage = "url(/assets/" + winner.wonImagePath + ")";
 
+    let cells = document.getElementsByClassName("gameBoardCell");
+    for (let j = 0; j < cells.length; j++) {
+        cells.item(j).style.zIndex = "-1";
+    }
     gameWon = true;
 }
 

@@ -67,6 +67,10 @@ img {
     margin-top: 2%;
     margin-left: 5%;
     margin-right: 5%;
+    max-width: 100%;
+    z-index: 1;
+    background-repeat: no-repeat;
+    background-size: cover;
     display: block;
 }
 

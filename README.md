@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/abgespaceterTyp/pixelWars.svg?branch=master)](https://travis-ci.org/AbgespaceterTyp/de.htwg.se.msiwar.aview.MainApp)
+[![Build Status](https://travis-ci.org/AbgespaceterTyp/PixelWars.svg?branch=master)]
 
 [![Coverage Status](https://coveralls.io/repos/github/AbgespaceterTyp/PixelWars/badge.svg?branch=master)](https://coveralls.io/github/AbgespaceterTyp/PixelWars?branch=master)
 

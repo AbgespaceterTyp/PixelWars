@@ -17,6 +17,9 @@
     <script src="@assets.path("vue/action-bar.js")" type="module"></script>
     <link rel="stylesheet" media="screen" href="@assets.path("stylesheets/bootstrap.css")">
     <body>
+        <audio class = "center" loop autoplay controls>
+            <source src="@assets.path("audio/intro.mp3")" type="audio/mp3"/>
+        </audio>
         <status-bar id="statusBar" player="@controller.activePlayerName" hp="@controller.activePlayerHealthPoints" maxHp="@controller.activePlayerHealthPoints"
         ap="@controller.activePlayerActionPoints" maxAp="@controller.activePlayerActionPoints">
         </status-bar>

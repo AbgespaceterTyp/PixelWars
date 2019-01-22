@@ -25,7 +25,7 @@ class ApplicationControllerSpec extends PlaySpecification with Mockito {
   "The `index` action" should {
     "redirect to login page if user is unauthorized" in new Context {
       new WithApplication(application) {
-        val Some(redirectResult) = route(app, FakeRequest(routes.ApplicationController.index())
+        val Some(redirectResult) = route(app, FakeRequest(routes.ApplicationController.user())
           .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
         )
 
@@ -38,13 +38,13 @@ class ApplicationControllerSpec extends PlaySpecification with Mockito {
 
         status(unauthorizedResult) must be equalTo OK
         contentType(unauthorizedResult) must beSome("text/html")
-        contentAsString(unauthorizedResult) must contain("Silhouette - Sign In")
+        contentAsString(unauthorizedResult) must contain("Sign in")
       }
     }
 
     "return 200 if user is authorized" in new Context {
       new WithApplication(application) {
-        val Some(result) = route(app, addCSRFToken(FakeRequest(routes.ApplicationController.index())
+        val Some(result) = route(app, addCSRFToken(FakeRequest(routes.ApplicationController.user())
           .withAuthenticator[DefaultEnv](identity.loginInfo))
         )
 

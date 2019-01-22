@@ -6,36 +6,40 @@
 @(user: models.User)(implicit request: RequestHeader, messages: Messages, webJarsUtil: WebJarsUtil, assets: AssetsFinder)
 
 @main("Control", Some(user)) {
-  <div class="col-md-12">
-    <div class="row">
-      <p class="col-md-12"></p>
+    <div class="col-md-12">
+        <div class="row">
+            <p class="col-md-12"></p>
+            <p class="col-md-12"></p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="col-md-12">
+                    Aktionsbar</p><p class="col-md-12"><img class="center" src="@assets.path("images/help/actionbar.png")"></p><p class="col-md-12">
+                Zeigt die möglichen Aktionen des aktuellen Spielers an (hier "Fahren", "Schießen" und "Bewegen").
+                An der Mausposition wird ein Tooltip angezeigt, wenn dieser auf eine Aktion zeigt.</p>
+            </div>
+            <div class="col-md-6">
+                <p class="col-md-12">
+                    Statusbar</p><p class="col-md-12"><img class="center" src="@assets.path("images/help/statusbar.png")"></p> <p class="col-md-12">
+                Zeigt die verbleibenden Leben (rote Kästchen) und Aktionspunkte (gelbe Kästchen) des aktuellen Spielers an.</p>
+            </div>
+        </div>
+        <div class="row">
+            <p class="col-md-12"></p>
+            <p class="col-md-12"></p>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <p class="col-md-12">Gültige Auswahl</p>
+                <p class="col-md-12"><img class="center" src="@assets.path("images/help/valid_fields.png")"></p>
+                <p class="col-md-12">Felder in Reichweite einer Aktion werden Hellblau umrandet.
+                    Befindet sich die Maus innerhalb eines dieser Felder, wird es Dunkelblau umrandet.</p>
+            </div>
+            <div class="col-md-6">
+                <p class="col-md-12">Ungültige Auswahl</p>
+                <p class="col-md-12"><img class="center" src="@assets.path("images/help/invalid_fields.png")"></p>
+                <p class="col-md-12">Felder außerhalb der Reichweiter einer Aktion werden Rot umrandet.</p>
+            </div>
+        </div>
     </div>
-    <div class="row">
-      <p class="col-md-12"></p>
-    </div>
-    <div class="row">
-      <p class="col-md-6">Aktionsbar</p>
-      <p class="col-md-6">Statusbar</p>
-      <p class="col-md-6"><img class="center" src="@assets.path("images/help/actionbar.png")"></p>
-      <p class="col-md-6"><img class="center" src="@assets.path("images/help/statusbar.png")"></p>
-      <p class="col-md-6">Zeigt die möglichen Aktionen des aktuellen Spielers an (hier "Fahren", "Schießen" und "Bewegen").
-        An der Mausposition wird ein Tooltip angezeigt, wenn dieser auf eine Aktion zeigt.</p>
-      <p class="col-md-6">Zeigt die verbleibenden Leben (rote Kästchen) und Aktionspunkte (gelbe Kästchen) des aktuellen Spielers an.</p>
-    </div>
-    <div class="row">
-      <p class="col-md-12"></p>
-    </div>
-    <div class="row">
-      <p class="col-md-12"></p>
-    </div>
-    <div class="row">
-      <p class="col-md-6">Gültige Auswahl</p>
-      <p class="col-md-6">Ungültige Auswahl</p>
-      <p class="col-md-6"><img class="center" src="@assets.path("images/help/valid_fields.png")"></p>
-      <p class="col-md-6"><img class="center" src="@assets.path("images/help/invalid_fields.png")"></p>
-      <p class="col-md-6">Felder in Reichweite einer Aktion werden Hellblau umrandet.
-        Befindet sich die Maus innerhalb eines dieser Felder, wird es Dunkelblau umrandet.</p>
-      <p class="col-md-6">Felder außerhalb der Reichweiter einer Aktion werden Rot umrandet.</p>
-    </div>
-  </div>
 }

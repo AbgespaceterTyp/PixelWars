@@ -1,0 +1,667 @@
+<body>
+        <status-bar id="statusBar" player="Spieler 1" hp="8" maxHp="8"
+        ap="3" maxAp="3">
+        </status-bar>
+        <div id="gameBoard">
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_0" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_1" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_2" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_3" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_4" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_5" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_6" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_7" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_8" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_9" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_10" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_11" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_12" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_13" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_0_14" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+            </div>
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_0" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_1" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_2" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_3" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_4" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_5" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_6" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_7" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_8" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_9" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_10" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_11" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_12" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_13" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_1_14" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+            </div>
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_0" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_1" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_2" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_3" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_4" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_5" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_6" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_7" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_8" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_9" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_10" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_11" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_12" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_13" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_2_14" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+            </div>
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_0" src="/assets/images/heavy_tank_red_90.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_1" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_2" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_3" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_4" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_5" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_6" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_7" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_8" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_9" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_10" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_11" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_12" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_13" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_3_14" src="/assets/images/medium_tank_blue_270.png"/>
+                
+                </div>
+            
+            </div>
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_0" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_1" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_2" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_3" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_4" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_5" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_6" src="/assets/images/block_palm.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_7" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_8" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_9" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_10" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_11" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_12" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_13" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_4_14" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+            </div>
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_0" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_1" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_2" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_3" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_4" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_5" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_6" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_7" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_8" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_9" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_10" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_11" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_12" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_13" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_5_14" src="/assets/images/placeholder.png"/>
+                
+                </div>
+            
+            </div>
+        
+            <div class="gameBoardRow">
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_0" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_1" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_2" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_3" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_4" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_5" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_6" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_7" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_8" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_9" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_10" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_11" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_12" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_13" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+                <div class="gameBoardCell">
+                
+                    <img class="gameBoardCellImage" id="gameBoardCellImage_6_14" src="/assets/images/block_dune.png"/>
+                
+                </div>
+            
+            </div>
+        
+        </div>
+        <actionbar id="actionbar"/>
+    </body>

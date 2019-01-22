@@ -178,6 +178,212 @@ class WuiControllerSpec extends PlaySpecification with Mockito {
         }
       }
     }
+
+    // Text
+    "backgroundImage action" should {
+      "returns current background image when user is authorized" in new Context {
+        new WithApplication(application) {
+          val Some(result) = route(app, addCSRFToken(FakeRequest(routes.WuiController.backgroundImage).withAuthenticator[DefaultEnv](identity.loginInfo)))
+
+          status(result) must beEqualTo(OK)
+          contentType(result) must beSome("text/plain")
+
+          contentAsString(result) must contain("images/background_desert.png")
+        }
+      }
+
+      "redirect to login page if user is unauthorized" in new Context {
+        new WithApplication(application) {
+          val Some(redirectResult) = route(app, FakeRequest(routes.WuiController.backgroundImage)
+            .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
+          )
+
+          status(redirectResult) must be equalTo SEE_OTHER
+
+          val redirectURL = redirectLocation(redirectResult).getOrElse("")
+          redirectURL must contain(routes.SignInController.view().toString)
+
+          val Some(unauthorizedResult) = route(app, addCSRFToken(FakeRequest(GET, redirectURL)))
+
+          status(unauthorizedResult) must be equalTo OK
+          contentType(unauthorizedResult) must beSome("text/html")
+          contentAsString(unauthorizedResult) must contain("Sign in")
+        }
+      }
+    }
+
+    // JSON
+    "executeAction action" should {
+      "returns player status when user is authorized" in new Context {
+        new WithApplication(application) {
+          val Some(result) = route(app, addCSRFToken(FakeRequest(routes.WuiController.executeAction(1,1,1)).withAuthenticator[DefaultEnv](identity.loginInfo)))
+
+          status(result) must beEqualTo(OK)
+          contentType(result) must beSome("application/json")
+
+          contentAsString(result) must contain("{\"playerName\":\"Spieler 1\",\"hp\":8,\"ap\":2}")
+        }
+      }
+
+      "redirect to login page if user is unauthorized" in new Context {
+        new WithApplication(application) {
+          val Some(redirectResult) = route(app, FakeRequest(routes.WuiController.executeAction(1,1,1))
+            .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
+          )
+
+          status(redirectResult) must be equalTo SEE_OTHER
+
+          val redirectURL = redirectLocation(redirectResult).getOrElse("")
+          redirectURL must contain(routes.SignInController.view().toString)
+
+          val Some(unauthorizedResult) = route(app, addCSRFToken(FakeRequest(GET, redirectURL)))
+
+          status(unauthorizedResult) must be equalTo OK
+          contentType(unauthorizedResult) must beSome("text/html")
+          contentAsString(unauthorizedResult) must contain("Sign in")
+        }
+      }
+    }
+
+    "canExecuteAction action" should {
+      "returns true when action is possible when user is authorized" in new Context {
+        new WithApplication(application) {
+          val Some(result) = route(app, addCSRFToken(FakeRequest(routes.WuiController.canExecuteAction(1,3,1)).withAuthenticator[DefaultEnv](identity.loginInfo)))
+
+          status(result) must beEqualTo(OK)
+          contentType(result) must beSome("text/plain")
+
+          contentAsString(result) must contain("true")
+        }
+      }
+
+      "redirect to login page if user is unauthorized" in new Context {
+        new WithApplication(application) {
+          val Some(redirectResult) = route(app, FakeRequest(routes.WuiController.canExecuteAction(1,3,1))
+            .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
+          )
+
+          status(redirectResult) must be equalTo SEE_OTHER
+
+          val redirectURL = redirectLocation(redirectResult).getOrElse("")
+          redirectURL must contain(routes.SignInController.view().toString)
+
+          val Some(unauthorizedResult) = route(app, addCSRFToken(FakeRequest(GET, redirectURL)))
+
+          status(unauthorizedResult) must be equalTo OK
+          contentType(unauthorizedResult) must beSome("text/html")
+          contentAsString(unauthorizedResult) must contain("Sign in")
+        }
+      }
+    }
+
+    "cellsInRange action" should {
+      "returns cells in range of action when user is authorized" in new Context {
+        new WithApplication(application) {
+          val Some(result) = route(app, addCSRFToken(FakeRequest(routes.WuiController.cellsInRange(1)).withAuthenticator[DefaultEnv](identity.loginInfo)))
+
+          status(result) must beEqualTo(OK)
+          contentType(result) must beSome("application/json")
+
+          contentAsString(result) must contain("[{\"rowIdx\":3,\"columnIdx\":1},{\"rowIdx\":2,\"columnIdx\":2},{\"rowIdx\":2,\"columnIdx\":0},{\"rowIdx\":3,\"columnIdx\":2},{\"rowIdx\":1,\"columnIdx\":0},{\"rowIdx\":3,\"columnIdx\":0},{\"rowIdx\":1,\"columnIdx\":2}]")
+        }
+      }
+
+      "redirect to login page if user is unauthorized" in new Context {
+        new WithApplication(application) {
+          val Some(redirectResult) = route(app, FakeRequest(routes.WuiController.cellsInRange(1))
+            .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
+          )
+
+          status(redirectResult) must be equalTo SEE_OTHER
+
+          val redirectURL = redirectLocation(redirectResult).getOrElse("")
+          redirectURL must contain(routes.SignInController.view().toString)
+
+          val Some(unauthorizedResult) = route(app, addCSRFToken(FakeRequest(GET, redirectURL)))
+
+          status(unauthorizedResult) must be equalTo OK
+          contentType(unauthorizedResult) must beSome("text/html")
+          contentAsString(unauthorizedResult) must contain("Sign in")
+        }
+      }
+    }
+
+    "gameBoard action" should {
+      "returns current game board as json when user is authorized" in new Context {
+        new WithApplication(application) {
+          val Some(result) = route(app, addCSRFToken(FakeRequest(routes.WuiController.gameBoard()).withAuthenticator[DefaultEnv](identity.loginInfo)))
+
+          status(result) must beEqualTo(OK)
+          contentType(result) must beSome("application/json")
+
+          val testFile = Source.fromFile("test/resources/gameboard.json")
+          contentAsString(result) must contain(testFile.mkString)
+          testFile.close()
+        }
+      }
+
+      "redirect to login page if user is unauthorized" in new Context {
+        new WithApplication(application) {
+          val Some(redirectResult) = route(app, FakeRequest(routes.WuiController.gameBoard)
+            .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
+          )
+
+          status(redirectResult) must be equalTo SEE_OTHER
+
+          val redirectURL = redirectLocation(redirectResult).getOrElse("")
+          redirectURL must contain(routes.SignInController.view().toString)
+
+          val Some(unauthorizedResult) = route(app, addCSRFToken(FakeRequest(GET, redirectURL)))
+
+          status(unauthorizedResult) must be equalTo OK
+          contentType(unauthorizedResult) must beSome("text/html")
+          contentAsString(unauthorizedResult) must contain("Sign in")
+        }
+      }
+    }
+
+    "actions action" should {
+      "returns actions for current player when user is authorized" in new Context {
+        new WithApplication(application) {
+          val Some(result) = route(app, addCSRFToken(FakeRequest(routes.WuiController.actions).withAuthenticator[DefaultEnv](identity.loginInfo)))
+
+          status(result) must beEqualTo(OK)
+          contentType(result) must beSome("application/json")
+
+          val testFile = Source.fromFile("test/resources/actions.json")
+          contentAsString(result) must contain(testFile.mkString)
+          testFile.close()
+        }
+      }
+
+      "redirect to login page if user is unauthorized" in new Context {
+        new WithApplication(application) {
+          val Some(redirectResult) = route(app, FakeRequest(routes.WuiController.actions)
+            .withAuthenticator[DefaultEnv](LoginInfo("invalid", "invalid"))
+          )
+
+          status(redirectResult) must be equalTo SEE_OTHER
+
+          val redirectURL = redirectLocation(redirectResult).getOrElse("")
+          redirectURL must contain(routes.SignInController.view().toString)
+
+          val Some(unauthorizedResult) = route(app, addCSRFToken(FakeRequest(GET, redirectURL)))
+
+          status(unauthorizedResult) must be equalTo OK
+          contentType(unauthorizedResult) must beSome("text/html")
+          contentAsString(unauthorizedResult) must contain("Sign in")
+        }
+      }
+    }
+
+    "socket action" should {
+      "should open socket connection when user is authorized" in new Context {
+        new WithApplication(application) {
+          route(app, addCSRFToken(FakeRequest(routes.WuiController.socket).withAuthenticator[DefaultEnv](identity.loginInfo)))
+        }
+      }
+    }
   }
 
   trait Context extends Scope {
@@ -205,5 +411,4 @@ class WuiControllerSpec extends PlaySpecification with Mockito {
       .overrides(new FakeModule)
       .build()
   }
-
 }

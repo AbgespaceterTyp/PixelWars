@@ -1,0 +1,1 @@
+[{"id":1,"damage":0,"description":"Panzer bewegen","iconPath":"images/action_move.png","range":1,"cost":1},{"id":2,"damage":2,"description":"Schießen","iconPath":"images/action_attack.png","range":3,"cost":1},{"id":4,"damage":0,"description":"Warten","iconPath":"images/action_wait.png","range":1,"cost":1}]
